@@ -14,17 +14,30 @@
 \maketitle
 
 \begin{itemize}
-      \item [1.1] Prove $1^2+2^2+...+n^2=\dfrac{1}{6}n(n+1)(2n+1)$ for all positive integers n.\\\textbf{Answer: } By induction. \\
+      \item [1.1] Prove $1^2+2^2+...+n^2=\dfrac{1}{6}n(n+1)(2n+1)$ for all positive integers $n$.\\\textbf{Answer: } By induction. \\
             Base case ($n=1$): $1=\dfrac{1}{6}(1+1)(2+1)\implies1=1$ which is true. \\
             Inductive step: Assume $1^2+2^2+...+n^2=\dfrac{1}{6}n(n+1)(2n+1)$ is true, we want to show that $1^2+2^2+...+n^2+(n+1)^2=\dfrac{1}{6}(n+1)(n+2)(2n+3)$ is true. We can do so by adding $(n+1)^2$ to both sides of the equation as follows:
             \[1^2+2^2+...+n^2+(n+1)^2=\dfrac{1}{6}n(n+1)(2n+1)+(n+1)^2\]
-            Factoring out $(n+1)$ from both terms on the right hand side:
-            \[1^2+2^2+...+n^2+(n+1)^2=(n+1)(\dfrac{1}{6}n(2n+1)+(n+1))\]
-            \[\implies1^2+2^2+...+n^2+(n+1)^2=(n+1)(\dfrac{1}{6}n(2n+1)+(n+1))\]
+            Expanding the right hand side results in the following:
+            \[1^2+2^2+...+n^2+(n+1)^2=\dfrac{1}{3}n^3+\dfrac{3}{2}n^2+\dfrac{13}{6}n+1\]
+            Which indeed factors into
+            \[\implies1^2+2^2+...+n^2+(n+1)^2=\dfrac{1}{6}(n+1)(n+2)(2n+3).\]
+            Therefore $1^2+2^2+...+n^2=\dfrac{1}{6}n(n+1)(2n+1)$ for all positive integers $n$ by mathematical induction.
       \item [1.9]
             \begin{itemize}
-                  \item [(a)] Decide for which integers the inequality $2^n>n^2$ is true.
-                  \item [(b)] Prove your claim in (a) by mathematical induction.
+                  \item [(a)] Decide for which integers the inequality $2^n>n^2$ is true.\\
+                  \textbf{Answer: } $2^n>n^2, n\in\mathbb{Z}$ is true for $n=0,1$ and $n>4$.
+                  \item [(b)] Prove your claim in (a) by mathematical induction.\\
+                  \textbf{Answer: } We will first show $n=0$ and $n=1$ case-by-case, then $n>4$ by induction.\\
+                  $n=0$: $2^n>n^2\implies 1>0$ which is true\\
+                  $n=1$: $2^n>n^2\implies 2>1$ which is true\\
+                  $n>4$: By induction as follows.\\
+                  Base case: ($n=5$) $2^n>n^2\implies 32>25$ which is true\\
+                  Indcutive step: Assume $2^n>n^2$ is true, we want to show that $2^{n+1}>(n+1)^2$ is also true. We can start by multiplying $2$ to both sides of the inequality: $2*2^n>2*n^2\implies 2^{n+1}>2n^2$. Then, if we could show that $2n^2>(n+1)^2$ for $n\geq 5$, $2^{n+1}>(n+1)^2$ would be also true. We will do so using another proof by induction: \begin{itemize}
+                        \item [] Base case: 
+                        \item [] Inductive step: $2(n+1)^2>(n+2)^2$? $$
+                  \end{itemize}
+
             \end{itemize}
       \item [1.11] For each $n\in\mathbb{N}$, let $P_n$ denote the assertion "$n^2+5n+1$ is an even integer."
             \begin{itemize}
