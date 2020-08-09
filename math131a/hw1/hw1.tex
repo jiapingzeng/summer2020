@@ -26,28 +26,55 @@
       \item [1.9]
             \begin{itemize}
                   \item [(a)] Decide for which integers the inequality $2^n>n^2$ is true.\\
-                  \textbf{Answer: } $2^n>n^2, n\in\mathbb{Z}$ is true for $n=0,1$ and $n>4$.
+                        \textbf{Answer: } $2^n>n^2, n\in\mathbb{Z}$ is true for $n=0,1$ and $n>4$.
                   \item [(b)] Prove your claim in (a) by mathematical induction.\\
-                  \textbf{Answer: } We will first show $n=0$ and $n=1$ case-by-case, then $n>4$ by induction.\\
-                  $n=0$: $2^n>n^2\implies 1>0$ which is true\\
-                  $n=1$: $2^n>n^2\implies 2>1$ which is true\\
-                  $n>4$: By induction as follows.\\
-                  Base case: ($n=5$) $2^n>n^2\implies 32>25$ which is true\\
-                  Indcutive step: Assume $2^n>n^2$ is true, we want to show that $2^{n+1}>(n+1)^2$ is also true. We can start by multiplying $2$ to both sides of the inequality: $2*2^n>2*n^2\implies 2^{n+1}>2n^2$. Then, if we could show that $2n^2>(n+1)^2$ for $n\geq 5$, $2^{n+1}>(n+1)^2$ would be also true. We will do so using another proof by induction: \begin{itemize}
-                        \item [] Base case: 
-                        \item [] Inductive step: $2(n+1)^2>(n+2)^2$? $$
-                  \end{itemize}
+                        \textbf{Answer: } We will first show $n=0$ and $n=1$ case-by-case, then $n>4$ by induction.\\
+                        $n=0$: $2^n>n^2\implies 1>0$ which is true\\
+                        $n=1$: $2^n>n^2\implies 2>1$ which is true\\
+                        $n>4$: By induction as follows.\\
+                        Base case: ($n=5$) $2^n>n^2\implies 32>25$ which is true\\
+                        Indcutive step: Assume $2^n>n^2$ is true, we want to show that $2^{n+1}>(n+1)^2$ is also true. We can start by multiplying $2$ to both sides of the inequality: $2*2^n>2*n^2\implies 2^{n+1}>2n^2$. Then, if we could show that $2n^2>(n+1)^2$ for $n\geq 5$, $2^{n+1}>(n+1)^2$ would be also true. We will do so using another proof by induction: \begin{itemize}
+                              \item [] Base case: $(n=5)$: $2n^2>(n+1)^2\implies 50>36$ which is true
+                              \item [] Inductive step: Assume $2n^2>(n+1)^2$ is true, we want to show that $2(n+1)^2>(n+2)^2$. By expanding the right hand side of the assumption, we have $2n^2>n^2+2n+1\implies n^2>2n+1$. $2(n+1)^2=2n^2+4n+2, (n+2)^2=n^2+4n+4$
+                        \end{itemize}
 
             \end{itemize}
       \item [1.11] For each $n\in\mathbb{N}$, let $P_n$ denote the assertion "$n^2+5n+1$ is an even integer."
             \begin{itemize}
-                  \item [(a)] Prove $P_{n+1}$ is true whenever $P_n$ is true.
-                  \item [(b)] For which $n$ is $P_n$ actually true? What is the moral of this exercise?
+                  \item [(a)] Prove $P_{n+1}$ is true whenever $P_n$ is true.\\
+                        \textbf{Answer: } Using the definition of $P_n$, $P_{n+1}$ corresponds to the expression $(n+1)^2+5(n+1)+1$. To show that it is even, we can first expand it into $(n+1)^2+5(n+1)+1=n^2+7n+7$. Then, $P_{n+1}-P_n=n^2+7n+7-n^2-5n-1=2n+6$ which is always even for $n\in\mathbb{N}$. Therefore, if $P_n$ is even, then $P_n+(P_{n+1}-P_n)=P_{n+1}$ must also be even.
+                  \item [(b)] For which $n$ is $P_n$ actually true? What is the moral of this exercise?\\
+                        \textbf{Answer: } For $n^2+5n+1$ to be even, $n^2+5n=n(n+5)$ must be odd. However, this is not possible for $n\in\mathbb{N}$. On one hand, if $n$ is even, $n(n+5)$ would have a factor of $2$ from $n$ and would therefore be even; on the other hand, if $n$ is odd, then $(n+5)$ would be even and $n(n+5)$ as well. The moral of this exercise is that finding a true base case is important in mathematical induction.
             \end{itemize}
       \item [3.1]
+            \begin{itemize}
+                  \item [(a)] Which of the properties A1-A4, M1-M4, DL, O1-O5 fail for $\mathbb{N}$?\\
+                        \textbf{Answer: } A4 fails since there are no negative numbers in $\mathbb{N}$; M4 fails since there are no fractions.
+                  \item [(b)] Which of these properties fail for $\mathbb{Z}$?\\
+                        \textbf{Answer: } M4 fails since there are no fractions in $\mathbb{Z}$.
+            \end{itemize}
       \item [3.6]
+            \begin{itemize}
+                  \item [(a)] Prove $|a+b+c|\leq|a|+|b|+|c|$ for all $a,b,c\in\mathbb{R}$.\\
+                        \textbf{Answer: } Let $m=a+b$, then since $|a+b|\leq |a|+|b|$ (triangle inequality), $|m|\leq |a|+|b|$. Then we can add $|c|$ to both sides of the inequality, resulting in $|m|+|c|\leq |a|+|b|+|c|$. Since $|m+c|\leq|m|+|c|$, we have $|m+c|\leq|m|+|c|\leq|a|+|b|+|c|\implies|m+c|\leq|a|+|b|+|c|$. Then by substituting $m=a+b$ we have $|a+b+c|\leq|a|+|b|+|c|$.
+                  \item [(b)] Use induction to prove \[|a_1+a_2+\ldots+a_n|\leq|a_1|+|a_2|+\ldots+|a_n|\] for $n$ numbers $a_1,a_2,...,a_n$.\\
+                        \textbf{Answer: }\\
+                        Base case: $(n=1)$: $|a_1|\leq|a_1|$ which is true.\\
+                        Inductive step: Assume the statement holds for $n$ numbers $a_1,a_2,\ldots,a_n$. Let $m=a_1+a_2+\ldots+a_n$, then we have $|m|\leq|a_1|+|a_2|+\ldots+|a_n|$. Adding $|a_{n+1}|$ to both sides of the inequality gives us $|m|+|a_{n+1}|\leq|a_1|+|a_2|+\ldots+|a_n|+|a_{n+1}|$. Then using $|m+a_{n+1}|\leq|m|+|a_{n+1}|$ (similar to previous part), we have $|m+a_{n+1}|\leq|a_1|+|a_2|+\ldots+|a_n|+|a_{n+1}|$. Then by substitution, $|a_1+a_2+\ldots+a_n+a_{n+1}|\leq|a_1|+|a_2|+\ldots+|a_n|+|a_{n+1}|$.\\
+                        Therefore $|a_1+a_2+\ldots+a_n|\leq|a_1|+|a_2|+\ldots+|a_n|$ by mathematical induction.
+            \end{itemize}
       \item [3.7]
-      \item [3.8]
+            \begin{itemize}
+                  \item [(a)] Show $|b|<a$ if and only if $-a<b<a$.\\
+                        \textbf{Answer: } 
+                        \begin{itemize}
+                              \item [$\Rightarrow$:] By cases. \\Case 1 ($b\geq 0$): we have $|b|=b$ by definition of aboslute value. Then, $|b|<a\implies b<a$. \\Case 2 ($b\leq 0$): $|b|=-b$, then $|b|<a\implies -b<a\implies b>-a$. \\Therefore $-a<b<a$.
+                              \item [$\Leftarrow$:] Also by cases. \\Case 1 ($b\geq 0$): $b=|b|$ by definition; then $-a<|b|<a$. \\Case 2 ($b\leq 0)$: $-a<b<a\implies a>-b>-a$ (multiply by $-1$). Since $-b=|b|$, $a>-b>-a\implies a>|b|>-a\implies -a<|b|<a$. \\Therefore $|b|<a$.
+                        \end{itemize}
+                  \item [(b)] Show $|a-b|<c$ if and only if $b-c<a<b+c$.
+                  \item [(c)] Show $|a-b|\leq c$ if and only if $b-c\leq a\leq b+c$.
+            \end{itemize}
+      \item [3.8] Let $a,b\in\mathbb{R}$. Show if $a\leq b_1$ for every $b_1>b$, then $a\leq b$.
       \item [4.6]
       \item [4.7]
       \item [4.8]
