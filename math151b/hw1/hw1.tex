@@ -16,8 +16,8 @@
 \begin{itemize}
     \item [Q1]
           \begin{itemize}
-              \item [(a)] Continuity: Since $f(t,y)=\dfrac{1+y}{t}$ is only undefined at $t=0$ and the given interval $t\in[1,2]$ does not include $0$, $f(t,y)$ is continuous on the given interval.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=\dfrac{1}{t}\leq\dfrac{1}{1}=1=L$.\\Therefore this IVP is well-posed by theorem 5.6.
-              \item [(b)] Continuity: $f(t,y)=y\,cos(t)$ is continuous on $t\in[0,1]$ because both $y$ and $cos(t)$ are defined everywhere.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=cos(t)\leq cos(0)=1=L$.\\Therefore this IVP is well-posed by theorem 5.6.
+              \item [(a)] Continuity: Since $f(t,y)=\dfrac{1+y}{t}$ is only undefined at $t=0$ and the given interval $t\in[1,2]$ does not include $0$, $f(t,y)$ is continuous on the given interval.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=\dfrac{1}{t}\leq\dfrac{1}{1}=1=L$.\\Therefore this IVP is well-posed by Theorem 5.6.
+              \item [(b)] Continuity: $f(t,y)=y\,cos(t)$ is continuous on $t\in[0,1]$ because both $y$ and $cos(t)$ are defined everywhere.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=cos(t)\leq cos(0)=1=L$.\\Therefore this IVP is well-posed by Theorem 5.6.
           \end{itemize}
     \item [Q2]
           \begin{itemize}
@@ -25,7 +25,7 @@
               \item [(b)]
                     \begin{tabular}{|c|c|}
                         \hline
-                        h    & y(2)               \\
+                        h    & y(2): Euler        \\
                         \hline
                         0.5  & 2.7083333333333335 \\
                         \hline
@@ -39,25 +39,71 @@
                     \begin{verbatim}
 def q2b():
     h_vals = [0.5, 0.2, 0.1, 0.01]  # step sizes
-    t_0, y_0, t_f = 1.0, 2.0, 2.0  # initial/final values
+    t_0, t_f, y_0 = 1, 2, 2  # initial/final values
 
     for h in h_vals:
-        print(f"h={h}")
         t, y, steps = t_0, y_0, int((t_f-t_0)/h)
         for _ in range(steps):
             y_prev = y
             y = y_prev + h*(1+t)/(1+y_prev)
             t += h
-        print(f"y={y}\n")
+        print(f"h={h}, y={y}")
                     \end{verbatim}
-              \item [(c)] Exact solution: $y(2)=\sqrt{14}-1\approx 2.741657387$; we can see that smaller $h$ values resulted in approximations that are closer to the exact $y(2)$ value as expected.
+              \item [(c)] Exact solution: $y(2)=\sqrt{14}-1\approx 2.741657387$; we can see that, as expected, smaller $h$ values resulted in approximations that are closer to the exact $y(2)$ value.
           \end{itemize}
     \item [Q3]
           \begin{itemize}
               \item [(a)] $\dfrac{df(t,y)}{dt}=\dfrac{\delta f(t,y)}{\delta t}+\dfrac{\delta f(t,y)}{\delta y}\cdot\dfrac{\delta y}{\delta t}=-y^2e^{-t}+2ye^{-t}\cdot y^2e^{-t}=\boxed{-y^2e^{-t}+2y^3e^{-2t}}$
-              \item [(b)] $y(0.5)\approx y(0)+0.5y'(0)+\dfrac{0.5^2}{2}y''(0)=1+0.5\cdot(1^2\cdot e^0)+\dfrac{0.5^2}{2}\cdot(1\cdot 1\cdot e^0)=1+\dfrac{1}{2}+\dfrac{1}{8}=\dfrac{13}{8}$\\$y(1)\approx \dfrac{13}{8}+0.5\cdot(\dfrac{13^2}{8^2}\cdot e^{-0.5})+\dfrac{0.5^2}{2}\cdot(\dfrac{3}{8}\cdot\dfrac{13}{8}\cdot e^{-0.5})$
+              \item [(b)] $y(0.5)\approx 1+0.5\cdot(1^2\cdot e^0)+0.125\cdot(-1^2\cdot e^0+2\cdot 1^3\cdot e^0)=1+0.5+0.125=1.625$\\$y(1)\approx 1.625+0.5\cdot(1.625^2\cdot e^{-0.5})+0.125\cdot(-1.625^2\cdot e^{-0.5}+2\cdot 1.625^2\cdot e^{-1})\approx\boxed{2.620252}$
               \item [(c)]
+                    \begin{tabular}{|c|c|c|}
+                        \hline
+                        h    & y(1): Euler        & y(1): Taylor-O2    \\
+                        \hline
+                        0.5  & 2.1823469921767127 & 2.620251616284609  \\
+                        \hline
+                        0.1  & 2.5318870490201966 & 2.711460067794978  \\
+                        \hline
+                        0.01 & 2.6955194578645645 & 2.7182049559385204 \\
+                        \hline
+                    \end{tabular}
+                    \begin{verbatim}
+def q3c():
+    h_vals = [0.5, 0.1, 0.01]  # step sizes
+    t_0, t_f, y_0 = 0, 1, 1  # initial/final values
+
+    print("(Euler's method)")
+    for h in h_vals:
+        t, y, steps = t_0, y_0, int((t_f-t_0)/h)
+        for _ in range(steps):
+            y_prev = y
+            y = y_prev + h*pow(y_prev, 2)*exp(-t)
+            t += h
+        print(f"h={h}, y={y}")
+                    
+    print("(Taylor method)")
+    for h in h_vals:
+        t, y, steps = t_0, y_0, int((t_f-t_0)/h)
+        for _ in range(steps):
+            y_prev = y
+            y = y_prev + h*pow(y_prev, 2)*exp(-t) + pow(h, 2) * \
+                (-1*pow(y_prev, 2)*exp(-t)+2*pow(y_prev, 3)*exp(-2*t))/2
+            t += h
+        print(f"h={h}, y={y}")
+                    \end{verbatim}
               \item [(d)]
+                    \begin{tabular}{|c|c|c|}
+                        \hline
+                        h    & Error: Euler         & Error: Taylor-O2      \\
+                        \hline
+                        0.5  & 0.5359348362823324   & 0.0980302121744363    \\
+                        \hline
+                        0.1  & 0.18639477943884852  & 0.006821760664067256  \\
+                        \hline
+                        0.01 & 0.022762370594480608 & 7.687252052468452e-05 \\
+                        \hline
+                    \end{tabular}\\\\
+                    As shown in the table above, the error for both methods decreases as $h$ decreases. In addition, Taylor method of order 2 converges much faster than Euler's method as expected.
           \end{itemize}
 \end{itemize}
 
