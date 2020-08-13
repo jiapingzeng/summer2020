@@ -14,37 +14,51 @@
 \maketitle
 
 \begin{itemize}
-	\item [Q1]
-	      \begin{itemize}
-		      \item [(a)]
-		      \item [(b)]
-	      \end{itemize}
-	\item [Q2]
-	      \begin{itemize}
-		      \item [(a)] $y(1.5)\approx y(1)+0.5*y'(1)=2+0.5*\dfrac{1+1}{1+2}=\dfrac{7}{3}\approx 2.333333$\\$y(2)\approx y(1.5)+0.5*y'(1.5)=\dfrac{7}{3}+0.5*\dfrac{1+1.5}{1+\frac{7}{3}}=\boxed{\dfrac{65}{24}}\approx 2.708333$
-		      \item [(b)]
-		            \begin{tabular}{|c|c|}
-			            \hline
-			            h    & y(2)               \\
-			            \hline
-			            0.5  & 2.7083333333333335 \\
-			            \hline
-			            0.2  & 2.890060069455041  \\
-			            \hline
-			            0.1  & 2.7355407599225927 \\
-			            \hline
-			            0.01 & 2.741056919124695  \\
-			            \hline
-		            \end{tabular}
-		      \item [(c)] Exact solution: $y(2)=\sqrt{14}-1\approx 2.741657387$; we can see that smaller $h$ values resulted in approximations that are closer to the exact $y(2)$ value as expected.
-	      \end{itemize}
-	\item [Q3]
-	      \begin{itemize}
-		      \item [(a)]
-		      \item [(b)]
-		      \item [(c)]
-		      \item [(d)]
-	      \end{itemize}
+    \item [Q1]
+          \begin{itemize}
+              \item [(a)] Continuity: Since $f(t,y)=\dfrac{1+y}{t}$ is only undefined at $t=0$ and the given interval $t\in[1,2]$ does not include $0$, $f(t,y)$ is continuous on the given interval.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=\dfrac{1}{t}\leq\dfrac{1}{1}=1=L$.\\Therefore this IVP is well-posed by theorem 5.6.
+              \item [(b)] Continuity: $f(t,y)=y\,cos(t)$ is continuous on $t\in[0,1]$ because both $y$ and $cos(t)$ are defined everywhere.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=cos(t)\leq cos(0)=1=L$.\\Therefore this IVP is well-posed by theorem 5.6.
+          \end{itemize}
+    \item [Q2]
+          \begin{itemize}
+              \item [(a)] $y(1.5)\approx 2+0.5\cdot\dfrac{1+1}{1+2}=\dfrac{7}{3}\approx 2.333333$\\$y(2)\approx \dfrac{7}{3}+0.5\cdot\dfrac{1+1.5}{1+\frac{7}{3}}=\boxed{\dfrac{65}{24}}\approx 2.708333$
+              \item [(b)]
+                    \begin{tabular}{|c|c|}
+                        \hline
+                        h    & y(2)               \\
+                        \hline
+                        0.5  & 2.7083333333333335 \\
+                        \hline
+                        0.2  & 2.729166194327493  \\
+                        \hline
+                        0.1  & 2.7355407599225927 \\
+                        \hline
+                        0.01 & 2.741056919124695  \\
+                        \hline
+                    \end{tabular}
+                    \begin{verbatim}
+def q2b():
+    h_vals = [0.5, 0.2, 0.1, 0.01]  # step sizes
+    t_0, y_0, t_f = 1.0, 2.0, 2.0  # initial/final values
+
+    for h in h_vals:
+        print(f"h={h}")
+        t, y, steps = t_0, y_0, int((t_f-t_0)/h)
+        for _ in range(steps):
+            y_prev = y
+            y = y_prev + h*(1+t)/(1+y_prev)
+            t += h
+        print(f"y={y}\n")
+                    \end{verbatim}
+              \item [(c)] Exact solution: $y(2)=\sqrt{14}-1\approx 2.741657387$; we can see that smaller $h$ values resulted in approximations that are closer to the exact $y(2)$ value as expected.
+          \end{itemize}
+    \item [Q3]
+          \begin{itemize}
+              \item [(a)] $\dfrac{df(t,y)}{dt}=\dfrac{\delta f(t,y)}{\delta t}+\dfrac{\delta f(t,y)}{\delta y}\cdot\dfrac{\delta y}{\delta t}=-y^2e^{-t}+2ye^{-t}\cdot y^2e^{-t}=\boxed{-y^2e^{-t}+2y^3e^{-2t}}$
+              \item [(b)] $y(0.5)\approx y(0)+0.5y'(0)+\dfrac{0.5^2}{2}y''(0)=1+0.5\cdot(1^2\cdot e^0)+\dfrac{0.5^2}{2}\cdot(1\cdot 1\cdot e^0)=1+\dfrac{1}{2}+\dfrac{1}{8}=\dfrac{13}{8}$\\$y(1)\approx \dfrac{13}{8}+0.5\cdot(\dfrac{13^2}{8^2}\cdot e^{-0.5})+\dfrac{0.5^2}{2}\cdot(\dfrac{3}{8}\cdot\dfrac{13}{8}\cdot e^{-0.5})$
+              \item [(c)]
+              \item [(d)]
+          \end{itemize}
 \end{itemize}
 
 \end{document}
