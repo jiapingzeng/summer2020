@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{physics}
 
 \title{Math 131A Homework 2}
 \date{8/12/2020}
@@ -16,19 +17,32 @@
 \begin{itemize}
     \item [8.1] Prove the following:
           \begin{itemize}
-              \item [(a)] lim $\dfrac{(-1)^n}{n}=0$
-              \item [(c)] lim $\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$
+              \item [(a)] lim $\dfrac{(-1)^n}{n}=0$\\
+                    \textbf{Answer: } Proof: Take $N=\dfrac{1}{\epsilon}$, then $n>N=\dfrac{1}{\epsilon}\implies\epsilon>\dfrac{1}{n}=\abs{s_n-0}$. Therefore lim $\dfrac{(-1)^n}{n}=0$ by definition of limit.
+              \item [(c)] lim $\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$\\
+                    \textbf{Answer: }
+                    Scratch: $\abs{\dfrac{2n-1}{3n+2}-\dfrac{2}{3}}<\epsilon\implies\abs{\dfrac{6n-3-2\cdot(3n+2)}{3\cdot(3n+2)}}<\epsilon\implies\abs{\dfrac{-7}{3\cdot(3n+2)}}<\epsilon\implies\dfrac{7}{3\epsilon}<3n+2\implies\dfrac{7}{9\epsilon}-\dfrac{2}{3}\leq n$.\\
+                    Proof: Let $\epsilon>0$, define $N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}$. Then, $n>N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}\implies 3n+2>\dfrac{7}{3\epsilon}\implies 3\epsilon>\dfrac{7}{3n+2}\implies\epsilon>\dfrac{7}{3\cdot(3n+2)}=\abs{s_n-\dfrac{2}{3}}$. Therefore lim $\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$ by definition.
           \end{itemize}
-    \item [8.4] Let $(t_n)$ be a bounded sequence, i.e., there exists $M$ such that $|t_n|\leq M$ for all $n$, and let $(s_n)$ be a sequence such that lim $s_n=0$. Prove lim $(s_nt_n)=0$.
+    \item [8.4] Let $(t_n)$ be a bounded sequence, i.e., there exists $M$ such that $|t_n|\leq M$ for all $n$, and let $(s_n)$ be a sequence such that lim $s_n=0$. Prove lim $(s_nt_n)=0$.\\
+          \textbf{Answer: } Want to show: $n>N\implies \abs{s_nt_n}<\epsilon$
     \item [8.5]
           \begin{itemize}
-              \item [(a)] Consider three sequences $(a_n)$, $(b_n)$ and $(s_n)$ such that $a_n\leq s_n\leq b_n$ for all $n$ and lim $a_n=$ lim $b_n=s$. Prove lim $s_n=s$. This is called the ``squeeze lemma.''
-              \item [(b)] Suppose $(s_n)$ and $(t_n)$ are sequences such that $|s_n|\leq t_n$ for all $n$ and lim $t_n=0$. Prove lim $s_n=0$.
+              \item [(a)] Consider three sequences $(a_n)$, $(b_n)$ and $(s_n)$ such that $a_n\leq s_n\leq b_n$ for all $n$ and lim $a_n=$ lim $b_n=s$. Prove lim $s_n=s$. This is called the ``squeeze lemma.''\\
+                    \textbf{Answer: } Since lim $a_n=s$, there exists an $N_a$ such that $n>N_a\implies\abs{a_n-s}<\epsilon\implies -\epsilon<a_n-s<\epsilon \implies s-\epsilon<a_n<s+\epsilon$. Similarly, since lim $b_n=s$, there exists an $N_b$ such that $n>N_b\implies\abs{b_n-s}<\epsilon\implies s-\epsilon<b_n<s+\epsilon$. Then, since $a_n\leq s_n\leq b_n$ for all $n$, we also have $s-\epsilon<a_n\leq s_n\leq b_n<s+\epsilon$. Therefore $s-\epsilon<s_n<s+\epsilon$, which implies that $\abs{s_n-s}<\epsilon$. Then lim $s_n=s$ by definition of limit.
+              \item [(b)] Suppose $(s_n)$ and $(t_n)$ are sequences such that $|s_n|\leq t_n$ for all $n$ and lim $t_n=0$. Prove lim $s_n=0$.\\
+                    \textbf{Answer: } Since lim $t_n=0$, there exists an $N$ such that $n>N\implies \abs{t_n}<\epsilon$. Then we also know that lim $-t_n=0$ because $\abs{-t_n}=\abs{t_n}<\epsilon$. Then, since $\abs{s_n}\leq t_n$, we have $-t_n\leq s_n\leq t_n$. Therefore lim $s_n=0$ by squeeze lemma.
           \end{itemize}
     \item [8.6] Let $(s_n)$ be a sequence in $\mathbb{R}$.
           \begin{itemize}
-              \item [(a)] Prove lim $s_n=0$ if and only if lim $|s_n|=0$.
-              \item [(b)] Observe that if $s_n=(-1)^n$, then lim $|s_n|$ exists, but lim $s_n$ does not exist.
+              \item [(a)] Prove lim $s_n=0$ if and only if lim $|s_n|=0$.\\
+                    \textbf{Answer: }
+                    \begin{itemize}
+                        \item [$\Rightarrow$:] Since lim $s_n=0$, there exists an $N$ such that $n>N\implies\abs{s_n}<\epsilon$. Then lim $\abs{s_n}=0$ by definition because $\abs{(\abs{s_n})}=\abs{s_n}<\epsilon$.
+                        \item [$\Leftarrow$:] Since lim $\abs{s_n}=0$, there exists an $N$ such that $n>N\implies\abs{(\abs{s_n})}<\epsilon$. Since $\abs{(\abs{s_n})}=\abs{s_n}$, we also have $\abs{s_n}<\epsilon$. Then lim $s_n=0$ by definition.
+                    \end{itemize}
+              \item [(b)] Observe that if $s_n=(-1)^n$, then lim $|s_n|$ exists, but lim $s_n$ does not exist.\\
+              \textbf{Answer: } Observed.
           \end{itemize}
     \item [8.9] Let $(s_n)$ be a sequence that converges.
           \begin{itemize}
@@ -36,7 +50,8 @@
               \item [(b)] Show that if $s_n\leq b$ for all but finitely many $n$, then lim $s_n\leq b$.
               \item [(c)] Conclude that if all but finitely many $s_n$ belong to $[a,b]$, then lim $s_n$ belongs to $[a,b]$.
           \end{itemize}
-    \item [8.10] Let $(s_n)$ be a convergent sequence, and suppose lim $s_n>a$. Prove there exists a number $N$ such that $n>N$ implies $s_n>a$.
+    \item [8.10] Let $(s_n)$ be a convergent sequence, and suppose lim $s_n>a$. Prove there exists a number $N$ such that $n>N$ implies $s_n>a$.\\
+    \textbf{Answer: } Let lim $s_n=s$. Then there exists an $N$ such that $n>N\implies\abs{s_n-s}<\epsilon$. By expanding the absolute value we have $-\epsilon<s_n-s<\epsilon$, which is equivalent to $s-\epsilon<s_n<s+\epsilon$.
     \item [9.1]
           \begin{itemize}
               \item [(a)]
