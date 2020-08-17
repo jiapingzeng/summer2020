@@ -15,60 +15,96 @@
 \maketitle
 
 \begin{itemize}
-    \item [8.1] Prove the following:
-          \begin{itemize}
-              \item [(a)] lim $\dfrac{(-1)^n}{n}=0$\\
-                    \textbf{Answer: } Proof: Take $N=\dfrac{1}{\epsilon}$, then $n>N=\dfrac{1}{\epsilon}\implies\epsilon>\dfrac{1}{n}=\abs{s_n-0}$. Therefore lim $\dfrac{(-1)^n}{n}=0$ by definition of limit.
-              \item [(c)] lim $\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$\\
-                    \textbf{Answer: }
-                    Scratch: $\abs{\dfrac{2n-1}{3n+2}-\dfrac{2}{3}}<\epsilon\implies\abs{\dfrac{6n-3-2\cdot(3n+2)}{3\cdot(3n+2)}}<\epsilon\implies\abs{\dfrac{-7}{3\cdot(3n+2)}}<\epsilon\implies\dfrac{7}{3\epsilon}<3n+2\implies\dfrac{7}{9\epsilon}-\dfrac{2}{3}\leq n$.\\
-                    Proof: Let $\epsilon>0$, define $N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}$. Then, $n>N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}\implies 3n+2>\dfrac{7}{3\epsilon}\implies 3\epsilon>\dfrac{7}{3n+2}\implies\epsilon>\dfrac{7}{3\cdot(3n+2)}=\abs{s_n-\dfrac{2}{3}}$. Therefore lim $\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$ by definition.
-          \end{itemize}
-    \item [8.4] Let $(t_n)$ be a bounded sequence, i.e., there exists $M$ such that $|t_n|\leq M$ for all $n$, and let $(s_n)$ be a sequence such that lim $s_n=0$. Prove lim $(s_nt_n)=0$.\\
-          \textbf{Answer: } Want to show: $n>N\implies \abs{s_nt_n}<\epsilon$
-    \item [8.5]
-          \begin{itemize}
-              \item [(a)] Consider three sequences $(a_n)$, $(b_n)$ and $(s_n)$ such that $a_n\leq s_n\leq b_n$ for all $n$ and lim $a_n=$ lim $b_n=s$. Prove lim $s_n=s$. This is called the ``squeeze lemma.''\\
-                    \textbf{Answer: } Since lim $a_n=s$, there exists an $N_a$ such that $n>N_a\implies\abs{a_n-s}<\epsilon\implies -\epsilon<a_n-s<\epsilon \implies s-\epsilon<a_n<s+\epsilon$. Similarly, since lim $b_n=s$, there exists an $N_b$ such that $n>N_b\implies\abs{b_n-s}<\epsilon\implies s-\epsilon<b_n<s+\epsilon$. Then, since $a_n\leq s_n\leq b_n$ for all $n$, we also have $s-\epsilon<a_n\leq s_n\leq b_n<s+\epsilon$. Therefore $s-\epsilon<s_n<s+\epsilon$, which implies that $\abs{s_n-s}<\epsilon$. Then lim $s_n=s$ by definition of limit.
-              \item [(b)] Suppose $(s_n)$ and $(t_n)$ are sequences such that $|s_n|\leq t_n$ for all $n$ and lim $t_n=0$. Prove lim $s_n=0$.\\
-                    \textbf{Answer: } Since lim $t_n=0$, there exists an $N$ such that $n>N\implies \abs{t_n}<\epsilon$. Then we also know that lim $-t_n=0$ because $\abs{-t_n}=\abs{t_n}<\epsilon$. Then, since $\abs{s_n}\leq t_n$, we have $-t_n\leq s_n\leq t_n$. Therefore lim $s_n=0$ by squeeze lemma.
-          \end{itemize}
-    \item [8.6] Let $(s_n)$ be a sequence in $\mathbb{R}$.
-          \begin{itemize}
-              \item [(a)] Prove lim $s_n=0$ if and only if lim $|s_n|=0$.\\
-                    \textbf{Answer: }
-                    \begin{itemize}
-                        \item [$\Rightarrow$:] Since lim $s_n=0$, there exists an $N$ such that $n>N\implies\abs{s_n}<\epsilon$. Then lim $\abs{s_n}=0$ by definition because $\abs{(\abs{s_n})}=\abs{s_n}<\epsilon$.
-                        \item [$\Leftarrow$:] Since lim $\abs{s_n}=0$, there exists an $N$ such that $n>N\implies\abs{(\abs{s_n})}<\epsilon$. Since $\abs{(\abs{s_n})}=\abs{s_n}$, we also have $\abs{s_n}<\epsilon$. Then lim $s_n=0$ by definition.
-                    \end{itemize}
-              \item [(b)] Observe that if $s_n=(-1)^n$, then lim $|s_n|$ exists, but lim $s_n$ does not exist.\\
-              \textbf{Answer: } Observed.
-          \end{itemize}
-    \item [8.9] Let $(s_n)$ be a sequence that converges.
-          \begin{itemize}
-              \item [(a)] Show that if $s_n\geq a$ for all but finitely many $n$, then lim $s_n\geq a$.
-              \item [(b)] Show that if $s_n\leq b$ for all but finitely many $n$, then lim $s_n\leq b$.
-              \item [(c)] Conclude that if all but finitely many $s_n$ belong to $[a,b]$, then lim $s_n$ belongs to $[a,b]$.
-          \end{itemize}
-    \item [8.10] Let $(s_n)$ be a convergent sequence, and suppose lim $s_n>a$. Prove there exists a number $N$ such that $n>N$ implies $s_n>a$.\\
-    \textbf{Answer: } Let lim $s_n=s$. Then there exists an $N$ such that $n>N\implies\abs{s_n-s}<\epsilon$. By expanding the absolute value we have $-\epsilon<s_n-s<\epsilon$, which is equivalent to $s-\epsilon<s_n<s+\epsilon$.
-    \item [9.1]
-          \begin{itemize}
-              \item [(a)]
-              \item [(b)]
-          \end{itemize}
-    \item [9.3]
-    \item [9.9]
-    \item [9.10]
-          \begin{itemize}
-              \item [(a)]
-              \item [(b)]
-          \end{itemize}
-    \item [9.11]
-    \item [9.12]
-    \item [10.5]
-    \item [10.6]
-    \item [10.7]
-    \item [P1]
+      \item [8.1] Prove the following:
+            \begin{itemize}
+                  \item [(a)] $\text{lim }\dfrac{(-1)^n}{n}=0$\\
+                        \textbf{Answer: } Proof: Take $N=\dfrac{1}{\epsilon}$, then $n>N=\dfrac{1}{\epsilon}\implies\epsilon>\dfrac{1}{n}=\abs{s_n-0}$. Therefore $\text{lim }\dfrac{(-1)^n}{n}=0$ by definition of limit.
+                  \item [(c)] $\text{lim }\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$\\
+                        \textbf{Answer: }
+                        Scratch: $\abs{\dfrac{2n-1}{3n+2}-\dfrac{2}{3}}<\epsilon\implies\abs{\dfrac{6n-3-2\cdot(3n+2)}{3\cdot(3n+2)}}<\epsilon\implies\abs{\dfrac{-7}{3\cdot(3n+2)}}<\epsilon\implies\dfrac{7}{3\epsilon}<3n+2\implies\dfrac{7}{9\epsilon}-\dfrac{2}{3}\leq n$.\\
+                        Proof: Let $\epsilon>0$, define $N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}$. Then, $n>N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}\implies 3n+2>\dfrac{7}{3\epsilon}\implies 3\epsilon>\dfrac{7}{3n+2}\implies\epsilon>\dfrac{7}{3\cdot(3n+2)}=\abs{s_n-\dfrac{2}{3}}$. Therefore $\text{lim }\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$ by definition.
+            \end{itemize}
+      \item [8.4] Let $(t_n)$ be a bounded sequence, i.e., there exists $M$ such that $|t_n|\leq M$ for all $n$, and let $(s_n)$ be a sequence such that $\text{lim }s_n=0$. Prove $\text{lim }(s_nt_n)=0$.\\
+            \textbf{Answer: } Since $\text{lim }s_n=0$, there exists an $N$ such that $n>N\implies\abs{s_n}<\epsilon$. Then, $\abs{s_n}\cdot\abs{t_n}<\epsilon\cdot\abs{t_n}\implies\abs{s_nt_n}<M\epsilon$ (multiply by $\abs{t_n}$; assuming that $\abs{t_n}\neq 0$, since clearly $\text{lim }s_nt_n=0$ when $\abs{t_n}=0$). Since $\epsilon$ is an arbitrary constant, we can take another $\epsilon_2=\dfrac{\epsilon}{M}>0$, which exists since $\mathbb{Q}$ is dense in $\mathbb{R}$. Then $\abs{s_nt_n}<\epsilon_2$ and $\text{lim }(s_nt_n)=0$ by definition of limit.
+      \item [8.5]
+            \begin{itemize}
+                  \item [(a)] Consider three sequences $(a_n)$, $(b_n)$ and $(s_n)$ such that $a_n\leq s_n\leq b_n$ for all $n$ and $\text{lim }a_n=$ $\text{lim }b_n=s$. Prove $\text{lim }s_n=s$. This is called the ``squeeze lemma.''\\
+                        \textbf{Answer: } Since $\text{lim }a_n=s$, there exists an $N_a$ such that $n>N_a\implies\abs{a_n-s}<\epsilon\implies -\epsilon<a_n-s<\epsilon \implies s-\epsilon<a_n<s+\epsilon$. Similarly, since $\text{lim }b_n=s$, there exists an $N_b$ such that $n>N_b\implies\abs{b_n-s}<\epsilon\implies s-\epsilon<b_n<s+\epsilon$. Then, since $a_n\leq s_n\leq b_n$ for all $n$, we also have $s-\epsilon<a_n\leq s_n\leq b_n<s+\epsilon$. Therefore $s-\epsilon<s_n<s+\epsilon$, which implies that $\abs{s_n-s}<\epsilon$. Then $\text{lim }s_n=s$ by definition of limit.
+                  \item [(b)] Suppose $(s_n)$ and $(t_n)$ are sequences such that $|s_n|\leq t_n$ for all $n$ and $\text{lim }t_n=0$. Prove $\text{lim }s_n=0$.\\
+                        \textbf{Answer: } Since $\text{lim }t_n=0$, there exists an $N$ such that $n>N\implies \abs{t_n}<\epsilon$. Then we also know that $\text{lim }-t_n=0$ because $\abs{-t_n}=\abs{t_n}<\epsilon$. Then, since $\abs{s_n}\leq t_n$, we have $-t_n\leq s_n\leq t_n$. Therefore $\text{lim }s_n=0$ by squeeze lemma.
+            \end{itemize}
+      \item [8.6] Let $(s_n)$ be a sequence in $\mathbb{R}$.
+            \begin{itemize}
+                  \item [(a)] Prove $\text{lim }s_n=0$ if and only if $\text{lim }|s_n|=0$.\\
+                        \textbf{Answer: }
+                        \begin{itemize}
+                              \item [$\Rightarrow$:] Since $\text{lim }s_n=0$, there exists an $N$ such that $n>N\implies\abs{s_n}<\epsilon$. Then $\text{lim }\abs{s_n}=0$ by definition because $\abs{(\abs{s_n})}=\abs{s_n}<\epsilon$.
+                              \item [$\Leftarrow$:] Since $\text{lim }\abs{s_n}=0$, there exists an $N$ such that $n>N\implies\abs{(\abs{s_n})}<\epsilon$. Since $\abs{(\abs{s_n})}=\abs{s_n}$, we also have $\abs{s_n}<\epsilon$. Then $\text{lim }s_n=0$ by definition.
+                        \end{itemize}
+                  \item [(b)] Observe that if $s_n=(-1)^n$, then $\text{lim }|s_n|$ exists, but $\text{lim }s_n$ does not exist.\\
+                        \textbf{Answer: } $\text{lim }\abs{s_n}=$ $\text{lim }\abs{(-1)^n}=$ $\text{lim }1$. We will show that $\text{lim }s_n$ does not exist by contradiction. Assume $\text{lim }s_n=s$ exists, then there exists an $N$ such that $n>N\implies\abs{(-1)^n-s}<\epsilon$. We know that $\abs{(-1)^n-s}=\abs{-1-s}$ for odd $n$, $\abs{1-s}$ for even $n$, and $\abs{-1-s}\neq\abs{1-n}$, then one of them must be nonzero. Then there would exist an $\epsilon>0$ such that max$\{\abs{-1-s},\abs{1-s}\}\geq\epsilon$, which contradicts with $\text{lim }s_n$ exists. Therefore $\text{lim }s_n$ does not exist by contradiction.
+            \end{itemize}
+      \item [8.9] Let $(s_n)$ be a sequence that converges.
+            \begin{itemize}
+                  \item [(a)] Show that if $s_n\geq a$ for all but finitely many $n$, then $\text{lim }s_n\geq a$.\\
+                        \textbf{Answer: }
+                  \item [(b)] Show that if $s_n\leq b$ for all but finitely many $n$, then $\text{lim }s_n\leq b$.\\
+                        \textbf{Answer: }
+                  \item [(c)] Conclude that if all but finitely many $s_n$ belong to $[a,b]$, then $\text{lim }s_n$ belongs to $[a,b]$.\\
+                        \textbf{Answer: }
+            \end{itemize}
+      \item [8.10] Let $(s_n)$ be a convergent sequence, and suppose $\text{lim }s_n>a$. Prove there exists a number $N$ such that $n>N$ implies $s_n>a$.\\
+            \textbf{Answer: } Let $\text{lim }s_n=s$. Then there exists an $N$ such that $n>N\implies\abs{s_n-s}<\epsilon$. By expanding the absolute value we have $-\epsilon<s_n-s<\epsilon$, which is equivalent to $s-\epsilon<s_n<s+\epsilon$.
+      \item [9.1] Prove the following:
+            \begin{itemize}
+                  \item [(a)] $\text{lim }\dfrac{n+1}{n}=1$\\
+                        \textbf{Answer: } $\text{lim }\dfrac{n+1}{n}=\text{lim }(1+\dfrac{1}{n})$ by multiplying $\dfrac{1}{n}$ to both the numerator and the denominator. Then, $\text{lim }(1+\dfrac{1}{n})=\text{lim }1+\text{lim }\dfrac{1}{n}=1+0=1$ by sum limit law.
+                  \item [(b)] $\text{lim }\dfrac{3n+7}{6n-5}=\dfrac{1}{2}$\\
+                        \textbf{Answer: } $\text{lim }\dfrac{3n+7}{6n-5}=\text{lim }\dfrac{3+\frac{7}{n}}{6-\frac{5}{n}}$ (multiply by $\dfrac{\frac{1}{n}}{\frac{1}{n}}$). Then, in the numerator, we have $\text{lim }(3+\dfrac{7}{n})=\text{lim }3+\text{lim }\dfrac{7}{n}=3+0=3$ by sum limit law. Simiarly, in the denominator, we have $\text{lim }(6-\dfrac{5}{n})=\text{lim }6-\text{lim }\dfrac{5}{n}=6-0=6$. Then $\text{lim }\dfrac{3n+7}{6n-5}=\text{lim }\dfrac{3}{6}=\dfrac{1}{2}$.
+            \end{itemize}
+      \item [9.3] Suppose $\text{lim }a_n=a$, $\text{lim }b_n=b$, and $s_n=\dfrac{a_n^3+4a_n}{b_n^2+1}$. Prove $\text{lim }s_n=\dfrac{a^3+4a}{b^2+1}$, using the limit theorems.\\
+            \textbf{Answer: } $\text{lim }s_n=\text{lim }\dfrac{a_n^3+4a_n}{b_n^2+1}$\\$=\text{lim }(a_n^3+4a_n)\cdot\text{lim }\dfrac{1}{b_n^2+1}$ (Product limit law)\\$=\dfrac{\text{lim }(a_n^3+4a_n)}{\text{lim }(b_n^2+1)}$ (Lemma 22)\\$=\dfrac{\text{lim }a_n^3+\text{lim }4a_n}{\text{lim }b_n^2+\text{lim }1}$ (Sum limit law)\\$=\dfrac{(\text{lim }a_n)^3+\text{lim }4a_n}{(\text{lim }b_n)^2+\text{lim }1}$ (Product limit law, applied to exponents)\\$=\dfrac{(\text{lim }a_n)^3+4\cdot\text{lim }a_n}{(\text{lim }b_n)^2+1}$ (Theorem 19)\\$=\dfrac{a^3+4a}{b^2+1}$ (Substitution)
+      \item [9.9] Suppose there exists $N_0$ such that $s_n\leq t_n$ for all $n>N_0$.
+            \begin{itemize}
+                  \item [(a)] Prove that if $\text{lim }s_n=+\infty$, then $\text{lim }t_n=+\infty$.\\
+                        \textbf{Answer: } Since $\text{lim }s_n=+\infty$, there exists an $N$ such that $n>N\implies s_n>M$ for all $M>0$. Then, since $t_n\geq s_n$ for $n>N_0$, we have $n>\text{max}\{N,N_0\}\implies t_n\geq s_n>M\implies t_n>M$. Therefore $\text{lim }t_n=+\infty$ by definition of divergence.
+                  \item [(b)] Prove that if $\text{lim }t_n=-\infty$, then $\text{lim }s_n=-\infty$.\\
+                        \textbf{Answer: } Similarly, since $\text{lim }t_n=-\infty$, there exists an $N$ such that $n>N\implies t_n<M$ for all $M<0$. Then, since $s_n\leq t_n$ for $n>N_0$, we have $n>\text{max}\{N,N_0\}\implies s_n\leq t_n<M\implies s_n<M$. Therefore $\text{lim }s_n=-\infty$ by definition of divergence.
+                  \item [(c)] Prove that if $\text{lim }s_n$ and $\text{lim }t_n$ exist, then $\text{lim }s_n\leq\text{lim }t_n$.\\
+                        \textbf{Answer: } Since we have $s_n\leq t_n$ for $n>N_0$, $t_n-s_n\geq 0$. Then $\text{lim }(t_n-s_n)\geq 0$ by 8.9(a). Furthermore, $\text{lim }t_n-\text{lim }s_n\geq 0$ by sum limit law; therefore $\text{lim }s_n\leq\text{lim }t_n$ upon rearranging the inequality.
+            \end{itemize}
+      \item [9.10]
+            \begin{itemize}
+                  \item [(a)] Show that if $\text{lim }s_n=+\infty$ and $k>0$, then lim$(ks_n)=+\infty$.\\
+                        \textbf{Answer: } Since $\text{lim }s_n=+\infty$, there exists an $N$ such that $n>N\implies s_n>M$ for all $M>0$. Then we also have $n>N\implies ks_n>kM$ since $k>0$. We can then take $M_1=kM>0$ and $n>N\implies ks_n>M_1$ for all $M_1>0$, then $\text{lim}(ks_n)=+\infty$ by definition of divergence.
+                  \item [(b)] Show $\text{lim }s_n=+\infty$ if and only if lim$(-s_n)=-\infty$.\\
+                        \textbf{Answer: }
+                        \begin{itemize}
+                              \item [$\Rightarrow$:] Since $\text{lim }s_n=+\infty$, there exists an $N$ such that $n>N\implies s_n>M$ for all $M>0$. By multiplying $-1$ to both sides of the inequality (and flipping the inequality), we have $n>N\implies -s_n<-M$. Then let $M_1=-M$; we know $M_1<0$ since $M>0$. Then $n>N\implies -s_n<M_1$ for $M_1<0$, therefore $\text{lim}(-s_n)=-\infty$ by definition of divergence.
+                              \item [$\Leftarrow$:] Similarly, since $\text{lim}(-s_n)=-\infty$, there exists an $N$ such that $n>N\implies -s_n<M$ for all $M<0$. Then we also have $s_n>-M$ by multiplying $-1$. Let $M_1=-M>0$, we have $n>N\implies s_n>M_1$, therefore $\text{lim }s_n=+\infty$.
+                        \end{itemize}
+            \end{itemize}
+      \item [9.11]
+            \begin{itemize}
+                  \item [(a)] Show that if $\text{lim }s_n=+\infty$ and inf$\{t_n:n\in\mathbb{N}\}>-\infty$, then lim$(s_n+t_n)=+\infty$.
+                  \item [(b)] Show that if $\text{lim }s_n=+\infty$ and $\text{lim }t_n>-\infty$, then lim$(s_n+t_n)=+\infty$.
+                  \item [(c)] Show that if $\text{lim }s_n=+\infty$ and if $(t_n)$ is a bounded sequence, then lim$(s_n+t_n)=+\infty$.
+            \end{itemize}
+      \item [9.12] Assume all $s_n\neq 0$ and that the limit $L=$ $\text{lim }\abs{\dfrac{s_{n+1}}{s_n}}$ exists.
+            \begin{itemize}
+                  \item [(a)] Show that if $L<1$, then $\text{lim }s_n=0$.\\
+                  \textbf{Answer: } $\text{lim }\abs{\dfrac{s_{n+1}}{s_n}}=\text{lim }\dfrac{\abs{s_{n+1}}}{\abs{s_n}}=\dfrac{\text{lim }\abs{s_{n+1}}}{\text{lim }\abs{s_n}}=L<1$, which implies that $\text{lim }\abs{s_n}>\text{lim }\abs{s_{n+1}}$.
+                  \item [(b)] Show that if $L>1$, then $\text{lim }\abs{s_n}=+\infty$.
+            \end{itemize}
+      \item [10.5] Prove Theorem 10.4(ii).\\
+      \textbf{Answer: } Let $(s_n)$ be an unbounded decreasing sequence and let $M<0$. Then, since $(s_n)$ is decreasing, it must be bounded above by $s_1$; since it is also unbounded, it must be unbounded below, i.e. $s_N<M$ for some $N$. Then we have $n>N\implies s_n\leq s_N<M$, therefore $\text{lim }s_n=-\infty$.
+      \item [10.6] \begin{itemize}
+                  \item [(a)] Let $(s_n)$ be a sequence such that \[\abs{s_{n+1}-s_n}<2^{-n} \text{ for all } n\in\mathbb{N}.\] Prove $(s_n)$ is a Cauchy sequence and hence a convergent sequence.
+                  \item [(b)] Is the result in $(a)$ true if we only assume $\abs{s_{n+1}-s_n}<\dfrac{1}{n}$ for all $n\in\mathbb{N}$?
+            \end{itemize}
+      \item [10.7] Let $S$ be a bounded nonempty subset of $\mathbb{R}$ such that sup $S$ is not in $S$. Prove there is a sequence $(s_n)$ of points in $S$ such that $\text{lim }s_n=$ sup $S$.\\
+      \textbf{Answer: } By definition of supremum, $\text{sup }S$ is the least upper bound; then we can take $m_n=\text{sup }S-\dfrac{1}{n}$ which cannot be an upper bound since $m<\text{sup }S$. Then, there must exist $s\in S$ such that $\text{sup }S>s_n>m_n$. Since $\text{sup }S$ is constant, $\text{lim sup }S=\text{sup }S$. In addition, $\text{lim }m_n=\text{lim sup }S-\text{lim }\dfrac{1}{n}=\text{sup }S-0=\text{sup }S$. Then we have $m<\text{sup }S$ with $\text{lim }m_n=\text{lim sup }S=\text{sup }S$; therefore $\text{lim }s_n=\text{sup }S$ by squeeze lemma.
+      \item [P1] Let $(x_n)_{n\in\mathbb{N}}$ and $(y_n)_{n\in\mathbb{N}}$ be sequences of real numbers. Assume that $(x_n)_{n\in\mathbb{N}}$ is convergent and that the set \[\{n\in\mathbb{N}:x_n\neq y_n\}\] is finite. Prove that $(y_n)_{n\in\mathbb{N}}$ is also convergent and $\text{lim}_{n\rightarrow\infty}y_n=\text{lim}_{n\rightarrow\infty}x_n$.\\
+      \textbf{Answer: } Let $\text{lim}_{n\rightarrow\infty}x_n=s$ and $\epsilon>0$. Since $(x_n)$ is convergent, there exists an $N_x$ such that $n>N_x\implies\abs{x_n-s}<\epsilon$. In addition, since the set $\{n\in\mathbb{N}:x_n\neq y_n\}$ is finite, there exists an $N_0$ such that $n>N_0\implies x_n=y_n$. Take $N=\text{max }\{N_0,N_x\}$ so that both are true, then $n>N\implies\abs{y_n-s}=\abs{x_n-s}<\epsilon$. Therefore  $\text{lim}_{n\rightarrow\infty}y_n=s=\text{lim}_{n\rightarrow\infty}x_n$.
 \end{itemize}
 \end{document}
