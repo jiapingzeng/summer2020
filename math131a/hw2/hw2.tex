@@ -20,8 +20,8 @@
                   \item [(a)] $\text{lim }\dfrac{(-1)^n}{n}=0$\\
                         \textbf{Answer: } Proof: Take $N=\dfrac{1}{\epsilon}$, then $n>N=\dfrac{1}{\epsilon}\implies\epsilon>\dfrac{1}{n}=\abs{s_n-0}$. Therefore $\text{lim }\dfrac{(-1)^n}{n}=0$ by definition of limit.
                   \item [(c)] $\text{lim }\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$\\
-                        \textbf{Answer: }
-                        Scratch: $\abs{\dfrac{2n-1}{3n+2}-\dfrac{2}{3}}<\epsilon\implies\abs{\dfrac{6n-3-2\cdot(3n+2)}{3\cdot(3n+2)}}<\epsilon\implies\abs{\dfrac{-7}{3\cdot(3n+2)}}<\epsilon\implies\dfrac{7}{3\epsilon}<3n+2\implies\dfrac{7}{9\epsilon}-\dfrac{2}{3}\leq n$.\\
+                        \textbf{Answer: }\\
+                        Scratch work: $\abs{\dfrac{2n-1}{3n+2}-\dfrac{2}{3}}<\epsilon\implies\abs{\dfrac{6n-3-2\cdot(3n+2)}{3\cdot(3n+2)}}<\epsilon\implies\abs{\dfrac{-7}{3\cdot(3n+2)}}<\epsilon\implies\dfrac{7}{3\epsilon}<3n+2\implies\dfrac{7}{9\epsilon}-\dfrac{2}{3}\leq n$.\\
                         Proof: Let $\epsilon>0$, define $N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}$. Then, $n>N=\dfrac{7}{9\epsilon}-\dfrac{2}{3}\implies 3n+2>\dfrac{7}{3\epsilon}\implies 3\epsilon>\dfrac{7}{3n+2}\implies\epsilon>\dfrac{7}{3\cdot(3n+2)}=\abs{s_n-\dfrac{2}{3}}$. Therefore $\text{lim }\dfrac{2n-1}{3n+2}=\dfrac{2}{3}$ by definition.
             \end{itemize}
       \item [8.4] Let $(t_n)$ be a bounded sequence, i.e., there exists $M$ such that $|t_n|\leq M$ for all $n$, and let $(s_n)$ be a sequence such that $\text{lim }s_n=0$. Prove $\text{lim }(s_nt_n)=0$.\\
@@ -47,14 +47,14 @@
       \item [8.9] Let $(s_n)$ be a sequence that converges.
             \begin{itemize}
                   \item [(a)] Show that if $s_n\geq a$ for all but finitely many $n$, then $\text{lim }s_n\geq a$.\\
-                        \textbf{Answer: }
+                        \textbf{Answer: } By contradiction. Since $s_n\geq a$ for all but finitely many $n$, there exists an $N_0$ such that $s_n\geq a$ for all $n>N_0$. Then, let $s=\text{lim }s_n$ and assume $s<a$, then pick $\epsilon=a-s>0$. Select $N\geq N_0$, then by definition of limit, we have $n>N\implies\abs{s_n-s}<\epsilon=a-s$. By expanding the previous expression we have $-a+s<s_n-s<a-s\implies s_n-s<a-s\implies s_n<a$, whcih contradicts with $s_n\geq a$ for $n>N_0$. Therefore $s=\text{lim }s_n\geq a$ by contradiction.
                   \item [(b)] Show that if $s_n\leq b$ for all but finitely many $n$, then $\text{lim }s_n\leq b$.\\
-                        \textbf{Answer: }
+                        \textbf{Answer: } Again by contradiction. Since $s_n\leq b$ for all but finitely many $n$, there exists an $n>N_0$ such that $s_n\leq b$ for all $n>N_0$. Then, let $s=\text{lim }s_n$ and assume $s>b$, then pick $\epsilon=s-b>0$. Select $N\geq N_0$, we have $n>N\implies\abs{s_n-s}<\epsilon=s-b$. Expanding the absolute value results in $-s+b<s_n-s<s-b\implies -s+b<s_n-s\implies b<s_n$, which contradicts with $s_n\leq b$ for $n>N_0$. Therefore $s=\text{lim }s_n\leq b$ by contradiction.
                   \item [(c)] Conclude that if all but finitely many $s_n$ belong to $[a,b]$, then $\text{lim }s_n$ belongs to $[a,b]$.\\
-                        \textbf{Answer: }
+                        \textbf{Answer: } By combining the previous parts, we have the following: if $a\leq s_n\leq b$ for finitely many $s_n$, then $a\leq \text{lim }s_n\leq b$. In other words, by using interval notations, if finitely many $s_n\in[a,b]$, then $\text{lim }\in[a,b]$.
             \end{itemize}
       \item [8.10] Let $(s_n)$ be a convergent sequence, and suppose $\text{lim }s_n>a$. Prove there exists a number $N$ such that $n>N$ implies $s_n>a$.\\
-            \textbf{Answer: } Let $\text{lim }s_n=s$. Then there exists an $N$ such that $n>N\implies\abs{s_n-s}<\epsilon$. By expanding the absolute value we have $-\epsilon<s_n-s<\epsilon$, which is equivalent to $s-\epsilon<s_n<s+\epsilon$.
+            \textbf{Answer: } Let $\text{lim }s_n=s$; since $s>a$, select $\epsilon=s-a>0$. Then there exists an $N$ such that $n>N\implies\abs{s_n-s}<\epsilon$. By expanding the absolute value we have $-\epsilon<s_n-s<\epsilon$, which is equivalent to $s-\epsilon<s_n<s+\epsilon\implies s-\epsilon<s_n$. By substituting $\epsilon=s-a$ we have $s-(s-a)<s_n\implies a<s_n$.
       \item [9.1] Prove the following:
             \begin{itemize}
                   \item [(a)] $\text{lim }\dfrac{n+1}{n}=1$\\
@@ -86,21 +86,30 @@
             \end{itemize}
       \item [9.11]
             \begin{itemize}
-                  \item [(a)] Show that if $\text{lim }s_n=+\infty$ and inf$\{t_n:n\in\mathbb{N}\}>-\infty$, then lim$(s_n+t_n)=+\infty$.
-                  \item [(b)] Show that if $\text{lim }s_n=+\infty$ and $\text{lim }t_n>-\infty$, then lim$(s_n+t_n)=+\infty$.
-                  \item [(c)] Show that if $\text{lim }s_n=+\infty$ and if $(t_n)$ is a bounded sequence, then lim$(s_n+t_n)=+\infty$.
+                  \item [(a)] Show that if $\text{lim }s_n=+\infty$ and inf$\{t_n:n\in\mathbb{N}\}>-\infty$, then lim$(s_n+t_n)=+\infty$.\\
+                  \textbf{Answer: } By definition of divergence, there exists an $N_s$ such that $n>N_s\implies s_n>M$ for all $M>0$. Additionally, we also have $t_n\geq\text{inf }t_n$ for all $n\in\mathbb{N}$ by definition of infimum. Then $n>N\implies s_n+t_n\geq s_n+x>M$.
+                  \item [(b)] Show that if $\text{lim }s_n=+\infty$ and $\text{lim }t_n>-\infty$, then lim$(s_n+t_n)=+\infty$.\\
+                  \textbf{Answer: } If $t_n$ diverges to $+\infty$, $\text{lim }s_n+t_n$ clearly diverges to $+\infty$ as well. If $t_n$ converges to $\text{lim }t_n=t\in\mathbb{R}$, there exists an $N_t$ such that $n>N_t\implies\abs{t_n-t}<\epsilon$ for $\epsilon>0\implies -\epsilon<t_n-t<\epsilon\implies t-\epsilon<t_n<t+\epsilon$. Since $s_n$ diverges to $+\infty$, we can pick $N=\text{max }(N_s,N_t)$ ($N_s$ same as part (a)); then $n>N\implies s_n+t_n>s_n+(t-\epsilon)>M$.
+                  \item [(c)] Show that if $\text{lim }s_n=+\infty$ and if $(t_n)$ is a bounded sequence, then lim$(s_n+t_n)=+\infty$.\\
+                  \textbf{Answer: } Similarly, since $(t_n)$ is bounded, then $n>N_s\implies s_n+t_n\geq s_n+\text{inf }t_n>M$.
             \end{itemize}
       \item [9.12] Assume all $s_n\neq 0$ and that the limit $L=$ $\text{lim }\abs{\dfrac{s_{n+1}}{s_n}}$ exists.
             \begin{itemize}
                   \item [(a)] Show that if $L<1$, then $\text{lim }s_n=0$.\\
-                  \textbf{Answer: } $\text{lim }\abs{\dfrac{s_{n+1}}{s_n}}=\text{lim }\dfrac{\abs{s_{n+1}}}{\abs{s_n}}=\dfrac{\text{lim }\abs{s_{n+1}}}{\text{lim }\abs{s_n}}=L<1$, which implies that $\text{lim }\abs{s_n}>\text{lim }\abs{s_{n+1}}$.
-                  \item [(b)] Show that if $L>1$, then $\text{lim }\abs{s_n}=+\infty$.
+                  \textbf{Answer: } Let $a\in\mathbb{R}$ such that $L<a<1$ and let $\epsilon=a-L>0$. Then since $L=\text{lim }\abs{\dfrac{s_{n+1}}{s_n}}$, there exists an $N$ such that $n>N\implies\abs{\abs{\dfrac{s_{n+1}}{s_n}}-L}<\epsilon\implies -a+L<\abs{\dfrac{s_{n+1}}{s_n}}-L<a-L\implies\abs{\dfrac{s_{n+1}}{s_n}}<a$. Therefore $\abs{s_{n+1}}<a\abs{s_n}$ for $n>N$. We will now show $\abs{s_n}<a^{n-N}\abs{s_N}$ for $n>N$ by induction as follows.\\
+                  Base case ($n=N+1$): We want to show that $\abs{s_{n+1}}<a\abs{s_N}$, which is true as shown above.\\
+                  Inductive step: Assume $\abs{s_n}<a^{n-N}\abs{s_N}$, we have $a\cdot\abs{s_n}<a\cdot a^{n-N}\abs{s_N}$ upon multiplying $a$ to both sides. Then, since $\abs{s_{n+1}}<a\abs{s_n}$ for $n>N$, $\abs{s_{n+1}}<a\cdot\abs{s_n}<a\cdot a^{n-N}\abs{s_N}=a^{(n+1)-N}\abs{s_N}$, which implies that $\abs{s_{n+1}}<a^{(n+1)-N}\abs{s_N}$. Therefore $\abs{s_n}<a^{n-N}\abs{s_N}$ by mathematical induction.\\
+                  Since all $s_n\neq 0$, we have $0\leq\abs{s_n}\leq a^{n-N}\abs{s_N}$. In addition, we know that $\text{lim }a^{n-N}\abs{s_N}=0$ since $L<a<1$. Then $\text{lim }\abs{s_n}=0$ by squeeze lemma and therefore $\text{lim }s_n=0$.
+                  \item [(b)] Show that if $L>1$, then $\text{lim }\abs{s_n}=+\infty$.\\
+                  \textbf{Answer: } Let $t_n=\dfrac{1}{s_n}$, then $\text{lim }\abs{\dfrac{t_{n+1}}{t_n}}=\text{lim }\abs{\dfrac{\frac{1}{s_{n+1}}}{\frac{1}{s_n}}}=\text{lim }\abs{\dfrac{s_n}{s_{s_{n+1}}}}=\dfrac{1}{L}$. Since $L>1$, $\dfrac{1}{L}<1$; then $\text{lim }t_n=0$ by part (a). Therefore $\text{lim }\abs{\dfrac{1}{s_n}}=\text{lim }\abs{t_n}=\text{lim }t_n$ and $\text{lim }\abs{s_n}=+\infty$ by Theorem 9.10.
             \end{itemize}
       \item [10.5] Prove Theorem 10.4(ii).\\
       \textbf{Answer: } Let $(s_n)$ be an unbounded decreasing sequence and let $M<0$. Then, since $(s_n)$ is decreasing, it must be bounded above by $s_1$; since it is also unbounded, it must be unbounded below, i.e. $s_N<M$ for some $N$. Then we have $n>N\implies s_n\leq s_N<M$, therefore $\text{lim }s_n=-\infty$.
       \item [10.6] \begin{itemize}
-                  \item [(a)] Let $(s_n)$ be a sequence such that \[\abs{s_{n+1}-s_n}<2^{-n} \text{ for all } n\in\mathbb{N}.\] Prove $(s_n)$ is a Cauchy sequence and hence a convergent sequence.
-                  \item [(b)] Is the result in $(a)$ true if we only assume $\abs{s_{n+1}-s_n}<\dfrac{1}{n}$ for all $n\in\mathbb{N}$?
+                  \item [(a)] Let $(s_n)$ be a sequence such that \[\abs{s_{n+1}-s_n}<2^{-n} \text{ for all } n\in\mathbb{N}.\] Prove $(s_n)$ is a Cauchy sequence and hence a convergent sequence.\\
+                  \textbf{Answer: }
+                  \item [(b)] Is the result in $(a)$ true if we only assume $\abs{s_{n+1}-s_n}<\dfrac{1}{n}$ for all $n\in\mathbb{N}$?\\
+                  \textbf{Answer: } No.
             \end{itemize}
       \item [10.7] Let $S$ be a bounded nonempty subset of $\mathbb{R}$ such that sup $S$ is not in $S$. Prove there is a sequence $(s_n)$ of points in $S$ such that $\text{lim }s_n=$ sup $S$.\\
       \textbf{Answer: } By definition of supremum, $\text{sup }S$ is the least upper bound; then we can take $m_n=\text{sup }S-\dfrac{1}{n}$ which cannot be an upper bound since $m<\text{sup }S$. Then, there must exist $s\in S$ such that $\text{sup }S>s_n>m_n$. Since $\text{sup }S$ is constant, $\text{lim sup }S=\text{sup }S$. In addition, $\text{lim }m_n=\text{lim sup }S-\text{lim }\dfrac{1}{n}=\text{sup }S-0=\text{sup }S$. Then we have $m<\text{sup }S$ with $\text{lim }m_n=\text{lim sup }S=\text{sup }S$; therefore $\text{lim }s_n=\text{sup }S$ by squeeze lemma.
