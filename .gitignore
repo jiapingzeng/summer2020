@@ -3,4 +3,5 @@
 !*.tex
 !*.pdf
 !*.py
+!*.png
 !.gitignore
