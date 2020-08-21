@@ -117,8 +117,22 @@ def q3():
           As shown in the plot, the approximation error in both Euler's method and Modified Euler's method decreases as expected, with Modified Euler's method converging faster. Heun's method is exact for this IVP (even for $h=1$, which has a corresponding error of about $10^{-16}$); as a result, the error actually increases slightly as $h$ decreases as rounding error increases.
     \item [5.2.17]
           \begin{itemize}
-              \item [(a)]
-              \item [(b)]
+              \item [(a)] $p(t)=\dfrac{x_n(t)}{x(t)}\implies\dfrac{dp(t)}{dt}=\dfrac{x(t)\cdot\frac{dx_n(t)}{dt}-x_n(t)\cdot\frac{dx(t)}{dt}}{x(t)^2}$\\$=\dfrac{x(t)\cdot[(b-d)x_n(t)+rb(x(t)-x_n(t))]-x_n(t)\cdot[(b-d)x(t)]}{x(t)^2}$\\$=\dfrac{(b-d)x(t)x_n(t)-(b-d)x_n(t)x(t)+x(t)\cdot rb(x(t)-x_n(t))}{x(t)^2}$\\$=\dfrac{rbx(t)^2-rbx(t)x_n(t)}{x(t)^2}$\\$=rb-\dfrac{rbx_n(t)}{x(t)}$\\$=rb(1-p(t))$
+              \item [(b)] $p(50)\approx\boxed{0.1042109561743075}$ using Heun's method as shown below.
+              \begin{verbatim}
+def q17b():
+    r, b = 0.1, 0.02
+    t_0, t_f, y_0, h = 0, 50, 0.01, 1
+    def f(t, w): return r*b*(1-w)
+
+    t, y, steps = t_0, y_0, int((t_f-t_0)/h)
+    for _ in range(steps):
+        y_prev = y
+        y = y_prev + h/4*(f(t, y_prev)+3*f(t+2*h/3,
+            y_prev+2*h/3*f(t+h/3, y_prev+h/3*f(t, y_prev))))
+        t += h
+    print(f"y={y}")
+              \end{verbatim}
           \end{itemize}
 \end{itemize}
 \end{document}
