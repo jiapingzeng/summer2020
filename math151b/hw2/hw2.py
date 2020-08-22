@@ -3,7 +3,7 @@ from matplotlib import pyplot
 
 
 def main():
-    q17b()
+    q3()
 
 
 def q3():

@@ -23,10 +23,10 @@
           \end{itemize}
     \item [Q2]
           \begin{itemize}
-              \item [(a)]
-              \item [(b)]
-              \item [(c)]
-              \item [(d)]
+              \item [(a)] $a_1f(t,y)+a_2f(t+\alpha, y+\beta f(t,y))$\\$=a_1f(t,y)+a_2(f(t,y+\beta f(t,y))+\alpha f_t(t,y+\beta f(t,y))+O(\alpha^2))$\\$=a_1f(t,y)+(a_2f(t,y)+a_2\beta f(t,y)f_y(t,y)+O(\beta^2))+(a_2\alpha f_t(t,y)+a_2\alpha\beta f(t,y)f_{ty}(t,y)+O(\beta^2))$\\$=a_1f(t,y)+a_2f(t,y)+a_2\beta f(t,y)f_y(t,y)+a_2\alpha f_t(t,y)+O(\alpha\beta)+O(\alpha^2)+O(\beta^2)$\\$=(a_1+a_2)f(t,y)+a_2\alpha f_t(t,y)+a_2\beta f(t,y)f_y(t,y)$
+              \item [(b)] $a_1=\dfrac{1}{2}\implies a_2=\dfrac{1}{2},\alpha=\beta=h$. Then we have $\dfrac{1}{2}f(t,y)+\dfrac{1}{2}f(t+h,y+hf(t,y))$ which is indeed the Modified Euler's method.
+              \item [(c)] $y(t+h)=y(t)+\dfrac{h}{2}(f(t,y)+f(t+h,y+hf(t,y))+O(h^2))$\\$\implies y(t+h)=y(t)+\dfrac{h}{2}(f(t,y)+f(t+h,y+hf(t,y)))+O(h^3)$\\$\implies\dfrac{y(t+h)-y(t)}{h}-\dfrac{h}{2}(f(t,y)+f(t+h,y+hf(t,y)))=O(h^2)$
+              \item [(d)] $y(0.5)\approx y(0)+\dfrac{1}{4}(f(0,0)+f(0.5, 0.5f(0, 0)))=\dfrac{1}{4}(f(0,0)+f(0.5, -0.5))=\dfrac{1}{4}(-1-0.75)=-\dfrac{7}{16}$\\$y(1)\approx y(0.5)+\dfrac{1}{4}(f(0.5,\dfrac{7}{16})+f(1,\dfrac{7}{16}+0.5f(0.5,\dfrac{7}{16})))=y(0.5)+\dfrac{1}{4}(-0.75+0)=-\dfrac{7}{16}-\dfrac{3}{16}=\boxed{-\dfrac{5}{8}}$
           \end{itemize}
     \item [Q3] Note: step sizes used are $h\in\{1,2^{-1},\ldots,2^{-9}\}$, approximation error for each method is calculated by $\text{error}=\abs{w-(-\frac{2}{3})}$\\\\
           \begin{tabular}{|c|c|c|c|}
