@@ -15,15 +15,48 @@
 \maketitle
 
 \begin{itemize}
-    \item [10.9]
-    \item [11.2]
-    \item [11.5]
-    \item [12.2]
-    \item [12.4]
-    \item [12.9]
-    \item [12.10]
-    \item [12.12]
-    \item [14.5]
+    \item [10.9] Let $s_1=1$ and $s_{n+1}=(\dfrac{n}{n+1})s_n^2$ for $n\geq 1$.
+          \begin{itemize}
+              \item [(a)] Find $s_2$, $s_3$ and $s_4$.\\
+                    $s_2=\dfrac{1}{2}\cdot 1=\dfrac{1}{2}$\\$s_3=\dfrac{2}{3}\cdot\dfrac{1}{4}=\dfrac{1}{6}$\\$s_3=\dfrac{3}{4}\cdot\dfrac{1}{36}=\dfrac{1}{48}$
+              \item [(b)] Show $\text{lim }s_n$ exists.\\
+                    Since $\dfrac{n}{n+1}<1$ and $s_n^2<s_n$ for all $n\geq 1$, $\dfrac{n}{n+1}s_n^2<1\cdot s_n\implies s_{n+1}\leq s_n$ for all $n\geq 1$. Therefore $(s_n)$ is monotone and decreasing. Then, since $(s_n)$ is decreasing, $s_1$ is an upper bound of the set and therefore $(s_n)$ is bounded above. In addition, $s_{n+1}$ is never negative because $n\leq 1\implies\dfrac{n}{n+1}>0$ and $s_n^2\geq 0$. Therefore $0$ is an lower bound of the set and $(s_n)$ is bounded below. Then $\text{lim }s_n$ exists by Theorem 10.2.
+              \item [(c)] Prove $\text{lim }s_n=0$.\\
+                    Let $s=\text{lim }s_n$, then $s=\text{lim }s_{n+1}=\text{lim }(\dfrac{n}{n+1})s_n^2=\text{lim }(\dfrac{n}{n+1})\cdot\text{lim }s_n^2=\text{lim }s_n^2=s^2\implies s=s^2$. Then we have $s=0$ or $s=1$. However, since $s_1=1$ is an upper bound and $(s_n)$ is strictly decreasing as shown in part (b), $s\neq 1$. Therefore $s=0=\text{lim }s_n$.
+          \end{itemize}
+    \item [11.2] Consider the sequences defined as follows:\[a_n=(-1)^n,\;b_n=\dfrac{1}{n},\; c_n=n^2,\;d_n=\dfrac{6n+4}{7n-3}.\]
+          \begin{itemize}
+              \item [(a)] For each sequence, give an example of a monotone subsequence.
+              \item [(b)] For each sequence, give its set of subsequential limits.
+              \item [(c)] For each sequence, give its lim sup and lim inf.
+              \item [(d)] Which of the sequences converge? diverge to $+\infty$? diverge to $-\infty$?
+              \item [(e)] Which of the sequences is bounded?
+          \end{itemize}
+    \item [11.5] Let $(q_n)$ be an enumeration of all the rationals in the interval $(0,1]$.
+          \begin{itemize}
+              \item [(a)] Give the set of subsequential limits for $(q_n)$.
+              \item [(b)] Give the values of $\text{lim sup }q_n$ and $\text{lim inf }q_n$.
+          \end{itemize}
+    \item [12.2] Prove $\text{lim sup }\abs{s_n}=0$ if and only if $\text{lim }s_n=0$.
+    \item [12.4] Show $\text{lim sup}(s_n+t_n)\leq\text{lim sup} s_n+\text{lim sup} t_n$ for bounded sequences $(s_n)$ and $(t_n)$.
+    \item [12.9] \begin{itemize}
+              \item [(a)] Prove that if $\text{lim }s_n=\infty$ and $\text{lim inf}t_n>0$, then $\text{lim }s_nt_n=+\infty$.
+              \item [(b)] Prove that if $\text{lim sup }s_n=+\infty$ and $\text{lim inf }t_n>0$, then $\text{lim sup }s_nt_n=+\infty$.
+              \item [(c)] Observe that Exercise 12.7 is the special case of (b) where $t_n=k$ for all $n\in\mathbb{N}$.
+          \end{itemize}
+    \item [12.10] Prove $(s_n)$ is bounded if and only if $\text{lim sup }\abs{s_n}<+\infty$.
+    \item [12.12] Let $(s_n)$ be a sequence of nonnegative numbers, and for each $n$ define $\sigma_n=\frac{1}{n}(s_1+s_2+\ldots+s_n)$.
+          \begin{itemize}
+              \item [(a)] Show \[\text{lim inf }s_n\leq\text{lim inf }\sigma_n\leq\text{lim sup }\sigma_n\leq\text{lim sup }s_n.\]
+              \item [(b)] Show that if $\text{lim }s_n$ exists, then $\text{lim }\sigma_n$ exists and $\text{lim }\sigma_n=\text{lim }s_n$.
+              \item [(c)] Give an example where $\text{lim }\sigma_n$ exists, but $\text{lim }s_n$ does not exist.
+          \end{itemize}
+    \item [14.5] Suppose $\sum a_n=A$ and $\sum b_n=B$ where $A$ and $B$ are real numbers. Use limit theorems to quickly prove the following.
+          \begin{itemize}
+              \item [(a)] $\sum(a_n+b_n)=A+B$.
+              \item [(b)] $\sum ka_n=kA$ for $k\in\mathbb{R}$.
+              \item [(c)] Is $\sum a_nb_n=AB$ a reasonable conjuecture? Discuss.
+          \end{itemize}
     \item [P1] Let $(s_n)$ be the sequence \[s_n=\dfrac{n^2+1}{n^2+2n}\text{ sin }n.\] Prove that $(s_n)$ has a convergent subsequence.
     \item [P2] Let $(s_n)$ be a sequence that contains eveyr integer. Prove that there is a subsequence of $(s_n)$ which diverges to $-\infty$.
     \item [P3] Suppose $(s_n)$ is a sequence and $(t_k)$ is a subsequence of $(s_n)$ such that $(t_k)$ converges. Prove that $\text{lim }t_k\leq\text{lim sup }s_n$.
