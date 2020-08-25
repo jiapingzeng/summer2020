@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Math 151B Midterm}
+\author{Jiaping Zeng}
+\date{8/24/2020}
+
+\begin{document}
+\setstretch{1.5}
+
+Jiaping Zeng 905363270
+
+\newpage
+\begin{itemize}
+    \item [1.] We can first substitute $k_1$ and $k_3$ into $w_{i+1}$ as follows: \[w_{i+1}=w_i+\dfrac{k_1+3k_3}{4}\]\[=w_i+\dfrac{1}{4}[hf(t_i,w_i)+3hf(t_i+\frac{2h}{3}, w_i+\frac{2k_2}{3})]\] Now substitute in $k_2$: \[=w_i+\dfrac{1}{4}[hf(t_i,w_i)+3hf(t_i+\frac{2h}{3}, w_i+\frac{2}{3}hf(t_i+\frac{h}{3},w_i+\frac{k_1}{3}))]\] And substitute in $k_1$ one more time results in \[=w_i+\dfrac{1}{4}[hf(t_i,w_i)+3hf(t_i+\frac{2h}{3}, w_i+\frac{2}{3}hf(t_i+\frac{h}{3},w_i+\frac{hf(t_i,w_i)}{3}))]\] We can also factor out an $h$ from the second part of the expression, giving us the following \[=w_i+\dfrac{h}{4}[f(t_i,w_i)+3f(t_i+\frac{2h}{3}, w_i+\frac{2h}{3}f(t_i+\frac{h}{3},w_i+\frac{h}{3}f(t_i,w_i)))]\] which is indeed Heun's method.
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [2.] \begin{itemize}
+        \item [(a)] Continuity: Since $f(t,y)=\dfrac{y}{1+t}$ is only undefined at $t=-1$ by inspection and the given interval $0\leq t\leq 1$ does not include $-1$, $f(t,y)$ is continuous on the interval.\\Lipschitz: $\dfrac{\delta f(t,y)}{\delta y}=\dfrac{1}{1+t}\leq\dfrac{1}{1+0}=1=L$.\\ Therefore this IVP is well-posed by Theorem 5.6.
+        \item [(b)] Two steps $\implies h=\frac{1}{2}$:\\$y(\frac{1}{2})\approx 1+\frac{1}{2}f(0+\frac{1}{4},1+\frac{1}{4}f(0,1))=1+\frac{1}{2}f(\frac{1}{4},1+\frac{1}{4})=1+\frac{1}{2}\cdot 1=\frac{3}{2}$\\$y(1)\approx \frac{3}{2}+\frac{1}{2}f(\frac{1}{2}+\frac{1}{4},\frac{3}{2}+\frac{1}{4}f(\frac{1}{2},\frac{3}{2}))=\frac{3}{2}+\frac{1}{2}f(\frac{3}{4},\frac{3}{2}+\frac{1}{4})=\frac{3}{2}+\frac{1}{2}\cdot 1=\boxed{1}$
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [3.] \begin{itemize}
+        \item [(a)] We can first list out the first few $w_i$ using the implicit formula as follows:\\$t_0=0, w_0=0$\\$t_1=h,w_1=0+h(h-h^2)=h^2-h^3$\\$t_2=2h,w_2=h^2-h^3+h(2h-4h^2)=3h^2-5h^3$\\$t_3=3h,w_3=3h^2-5h^3+h(3h-9h^2)=6h^2-14h^3$\\$t_4=4h,w_4=6h^2-14h^3+h(4h-16h^2)=10h^2-30h^3$\\$\ldots$\\Then we can see that:\\$t_i=ih,w_i=\boxed{\sum_{n=1}^i(nh^2-n^2h^3)}$
+        \item [(b)] By Taylor expansion, we have \[y(t+h)=y(t)+hy'(t)+\dfrac{h^2}{2}y''(t)+O(h^3)=y(t)+hf(t,y)+\dfrac{h^2}{2}y''(t)+O(h^3),\] then we can find the truncation error as follows: \[\dfrac{y(t+h)-y(t)-hf(t,y)}{h}=\dfrac{\frac{h^2}{2}y''(t)+O(h^3)}{h}\]\[\implies\dfrac{y(t+h)-y(t)}{h}-f(t,y)=\dfrac{h}{2}y''(t)+O(h^2)\] Hence the leading term is $\dfrac{h}{2}y''(t)$, which in this IVP is \[\dfrac{h}{2}y''(t)=\dfrac{h}{2}\cdot\dfrac{d}{dt}(\dfrac{y}{1+t})\]\[=\dfrac{h}{2}\cdot[\dfrac{-y}{(1+t)^2}+\dfrac{1}{1+t}(t-t^2)]\]\[=\dfrac{h(-y-t^3+t)}{2(t+1)^2}\] Then as shown in part (a), we can substitute $t_i=ih$ and $w_i=\sum_{n=1}^i(nh^2-n^2h^3)$ which results in \[=\dfrac{h(-i^3h^3+ih-\sum_{n=1}^i(nh^2-n^2h^3))}{2(ih+1)^2}\]\[=\boxed{\dfrac{-i^3h^4-h^3\sum_{n=1}^i(n-n^2h)+ih^2}{2(ih+1)^2}}\]
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [4.] Starting with the given equality: \[y(t_{i+1})=y(t_i)+ahf(t_i,y(t_i))+bhf(t_{i-1},y(t_{i-1}))+chf(t_{i-2},y(t_{i-2}))\]By Taylor expansion, the left hand side expands into \[y(t_i)+hy'(t_i)+\dfrac{h^2}{2}y''(t_i)+\dfrac{h^3}{6}y'''(t)+O(h^4)\] Whereas the right hand side (substituting $y'(t_i)=f(t_i,y(t_i))$) is equivalent to \[y(t_i)+ahy'(t_i)+bhy'(t_i-h)+chy'(t_i-2h)\]\[=y(t_i)+ahy'(t_i)+bh[y'(t_i)-hy''(t_i)+\dfrac{h^2}{2}y'''(t_i)-O(h^3)]+ch[y'(t_i)-2hy''(t_i)+2h^2y'''(t_i)-O(h^3)]\]\[=y(t_i)+(a+b+c)hy'(t)+(-b-2c)h^2y''(t_i)+(\frac{b}{2}+2c)h^3y'''(t_i)-O(h^4)\] Then by matching coefficients we have \[a+b+c=1,-b-2c=\dfrac{1}{2},\dfrac{b}{2}+2c=\dfrac{1}{6}\implies a=\dfrac{23}{12},b=-\dfrac{4}{3},c=\dfrac{5}{12}\] Therefore, by substitution, the Adams-Bashforth Three step method is: \[y(t_{i+1})=y(t_i)+\dfrac{23}{12}hf(t_i,y(t_i))-\dfrac{4}{3}hf(t_{i-1},y(t_{i-1}))+\dfrac{5}{12}hf(t_{i-2},y(t_{i-2}))\]
+\end{itemize}
+\end{document}
