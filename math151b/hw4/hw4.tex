@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+\title{Math 151B Homework 4}
+\date{8/27/2020}
+\author{Jiaping Zeng}
+
+\begin{document}
+\setstretch{1.5}
+\maketitle
+
+\begin{itemize}
+    \item [Q1] After expanding the expression we have\\$y(t_{i+1})=y(t_i)+ahf(t_i,y(t_i))+bhf(t_{i-1},y(t_{i-1}))+chf(t_{i-2},y(t_{i-2}))+dhf(t_{i-3},y(t_{i-3}))$\\Then we can expand both sides using Taylor polynomials as follows:\\$LHS=y(t_{i+1})=y(t_i)+hy'(t_i)+\dfrac{h^2}{2}y''(t_i)+\dfrac{h^3}{6}y'''(t)+\dfrac{h^4}{24}y^{(4)}(t)+O(h^5)$\\
+    $RHS=y(t_i)+ahy'(t_i)+bhy'(t_i-h)+chy'(t_i-2h)+dhy'(t_i-3h)$\\
+    $=y(t_i)+ahy'(t_i)+bh[y'(t_i)-hy''(t_i)+\dfrac{h^2}{2}y'''(t_i)-\dfrac{h^3}{6}y^{(4)}(t)+O(h^4)]+ch[y'(t_i)-2hy''(t_i)+2h^2y'''(t_i)-\dfrac{4h^3}{3}y^{(4)}(t)+O(h^4)]+dh[y'(t_i)-3hy''(t_i)+\dfrac{9h^2}{2}y'''(t_i)-\dfrac{9h^3}{2}y^{(4)}(t)+O(h^4)]$\\
+    $=y(t_i)+(a+b+c+d)hy'(t)+(-b-2c-3d)h^2y''(t_i)+(\dfrac{b}{2}+2c+\dfrac{9d}{2})h^3y'''(t_i)+(-\dfrac{b}{6}-\dfrac{4c}{3}-\dfrac{9d}{2})h^4y^{(4)}(t_i)+O(h^5)$\\
+    Then by matching coefficients we have\\$a+b+c+d=1,b-2c-3d=\dfrac{1}{2},\dfrac{b}{2}+2c+\dfrac{9d}{2}=\dfrac{1}{6},-\dfrac{b}{6}-\dfrac{4c}{3}-\dfrac{9d}{2}=\dfrac{1}{24}$\\$\implies\boxed{a=\dfrac{55}{24},b=-\dfrac{59}{24},c=\dfrac{37}{24},d=\dfrac{-3}{8}}$
+    \item [Q2] 
+    \item [Q3] 
+\end{itemize}
+
+\end{document}
