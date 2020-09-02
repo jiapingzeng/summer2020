@@ -11,17 +11,47 @@
 \author{Jiaping Zeng}
 
 \begin{document}
-\setstretch{1.5}
+\setstretch{1.75}
 \maketitle
 
 \begin{itemize}
     \item [Q1] After expanding the expression we have\\$y(t_{i+1})=y(t_i)+ahf(t_i,y(t_i))+bhf(t_{i-1},y(t_{i-1}))+chf(t_{i-2},y(t_{i-2}))+dhf(t_{i-3},y(t_{i-3}))$\\Then we can expand both sides using Taylor polynomials as follows:\\$LHS=y(t_{i+1})=y(t_i)+hy'(t_i)+\dfrac{h^2}{2}y''(t_i)+\dfrac{h^3}{6}y'''(t)+\dfrac{h^4}{24}y^{(4)}(t)+O(h^5)$\\
-    $RHS=y(t_i)+ahy'(t_i)+bhy'(t_i-h)+chy'(t_i-2h)+dhy'(t_i-3h)$\\
-    $=y(t_i)+ahy'(t_i)+bh[y'(t_i)-hy''(t_i)+\dfrac{h^2}{2}y'''(t_i)-\dfrac{h^3}{6}y^{(4)}(t)+O(h^4)]+ch[y'(t_i)-2hy''(t_i)+2h^2y'''(t_i)-\dfrac{4h^3}{3}y^{(4)}(t)+O(h^4)]+dh[y'(t_i)-3hy''(t_i)+\dfrac{9h^2}{2}y'''(t_i)-\dfrac{9h^3}{2}y^{(4)}(t)+O(h^4)]$\\
-    $=y(t_i)+(a+b+c+d)hy'(t)+(-b-2c-3d)h^2y''(t_i)+(\dfrac{b}{2}+2c+\dfrac{9d}{2})h^3y'''(t_i)+(-\dfrac{b}{6}-\dfrac{4c}{3}-\dfrac{9d}{2})h^4y^{(4)}(t_i)+O(h^5)$\\
-    Then by matching coefficients we have\\$a+b+c+d=1,b-2c-3d=\dfrac{1}{2},\dfrac{b}{2}+2c+\dfrac{9d}{2}=\dfrac{1}{6},-\dfrac{b}{6}-\dfrac{4c}{3}-\dfrac{9d}{2}=\dfrac{1}{24}$\\$\implies\boxed{a=\dfrac{55}{24},b=-\dfrac{59}{24},c=\dfrac{37}{24},d=\dfrac{-3}{8}}$
-    \item [Q2] 
-    \item [Q3] 
+          $RHS=y(t_i)+ahy'(t_i)+bhy'(t_i-h)+chy'(t_i-2h)+dhy'(t_i-3h)$\\
+          $=y(t_i)+ahy'(t_i)+bh[y'(t_i)-hy''(t_i)+\dfrac{h^2}{2}y'''(t_i)-\dfrac{h^3}{6}y^{(4)}(t)+O(h^4)]+ch[y'(t_i)-2hy''(t_i)+2h^2y'''(t_i)-\dfrac{4h^3}{3}y^{(4)}(t)+O(h^4)]+dh[y'(t_i)-3hy''(t_i)+\dfrac{9h^2}{2}y'''(t_i)-\dfrac{9h^3}{2}y^{(4)}(t)+O(h^4)]$\\
+          $=y(t_i)+(a+b+c+d)hy'(t)+(-b-2c-3d)h^2y''(t_i)+(\dfrac{b}{2}+2c+\dfrac{9d}{2})h^3y'''(t_i)+(-\dfrac{b}{6}-\dfrac{4c}{3}-\dfrac{9d}{2})h^4y^{(4)}(t_i)+O(h^5)$\\
+          Then by matching coefficients we have\\$a+b+c+d=1,b-2c-3d=\dfrac{1}{2},\dfrac{b}{2}+2c+\dfrac{9d}{2}=\dfrac{1}{6},-\dfrac{b}{6}-\dfrac{4c}{3}-\dfrac{9d}{2}=\dfrac{1}{24}$\\$\implies\boxed{a=\dfrac{55}{24},b=-\dfrac{59}{24},c=\dfrac{37}{24},d=\dfrac{-3}{8}}$
+    \item [Q2] \begin{itemize}
+              \item [(a)] By Taylor expansion we have\\
+                    $y(t_{i+1})=y(t_i)+hf(t_i,y_i)+\frac{h^2}{2}\nabla f(t_i,y_i)+O(h^3)$\\Similarly,\\
+                    $w_{i+1}=w_i+a(f+h\nabla f+O(h^2))=w_i+(a+b)f+ah\nabla f+O(h^2)$\\By matching coefficients we have\\$a+b=h, ah=\frac{h^2}{2}\implies\boxed{a=\frac{h}{2},b=\frac{h}{2}}$
+              \item [(b)] \begin{verbatim}
+def q2b():
+    a, b, h = 0, 1, 0.1
+    u0 = numpy.array([0, 0])
+
+    def f(t, u):
+        A = numpy.array([[0, 1], [4, 0]])
+        b = numpy.array([0, 6*math.exp(-t)])
+        return A.dot(u)+b
+
+    def pred(f, wi, ti, h):
+        return wi+h*f(ti+h/2, wi+h/2*f(ti, wi))
+
+    def corr(f, wi, wi_bar, ti, h):
+        return wi+h/2*f(ti, wi)+h/2*f(ti+h, wi_bar)
+
+    steps = int((b-a)/h)
+    wi = u0
+    for i in range(steps):
+        ti = (i-1)*h
+        wi_bar = pred(f, wi, ti, h)
+        wi = corr(f, wi, wi_bar, ti, h)
+
+    print(f"y={wi[0]}, y'={wi[1]}")
+        \end{verbatim}
+              \item [(c)] $y(1)\approx \boxed{3.5140233617478946}$ by running the code above.
+          \end{itemize}
+    \item [Q3] By substituting $f(t,w)=wg(t)$ we have\\$w_{i+1}=w_i+\frac{9h}{24}w_{i+1}g(t_{i+1})+\frac{19h}{24}w_ig(t_i)-\frac{5h}{24}w_{i-1}g(t_{i-1})+\frac{h}{24}w_{i-2}g(t_{i-2})$\\$\implies w_{i+1}(1-\frac{9h}{24})=w_i+\frac{19h}{24}w_ig(t_i)-\frac{5h}{24}w_{i-1}g(t_{i-1})+\frac{h}{24}w_{i-2}g(t_{i-2})$\\$\implies \boxed{w_{i+1}=\dfrac{w_i+\frac{19h}{24}w_ig(t_i)-\frac{5h}{24}w_{i-1}g(t_{i-1})+\frac{h}{24}w_{i-2}g(t_{i-2})}{1-\frac{9h}{24}}}$
 \end{itemize}
 
 \end{document}
