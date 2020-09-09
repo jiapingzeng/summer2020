@@ -17,38 +17,58 @@
 \begin{itemize}
     \item [19.1] Which of the following continuous functions are uniformly continuous on the specified set? Justify your answer.
           \begin{itemize}
-              \item [(a)] $f(x)=x^{17}\text{sin}\,x-e^x\text{cos}\,3x$ on $[0,\pi]$
-              \item [(c)] $f(x)=x^3$ on $(0,1)$
-              \item [(d)] $f(x)=x^3$ on $\mathbb{R}$
-              \item [(e)] $f(x)=\text{sin}\,\frac{1}{x^2}$ on $(0,1]$
+              \item [(a)] $f(x)=x^{17}\text{sin}\,x-e^x\text{cos}\,3x$ on $[0,\pi]$: Uniformly continuous\\\textbf{Proof: }Since $f(x)$ is continuous on $[0,\pi]$ (by applying Theorem 17.4 to known continuous functions), it must also be uniformly continuous on $[0,\pi]$ by Theorem 19.2.
+              \item [(c)] $f(x)=x^3$ on $(0,1)$: Uniformly continuous\\\textbf{Proof: }Since $x^3$ is continuous on the closed interval $[0,1]$, it must be uniformly continuous on $(0,1)$ by Theorem 19.5.
+              \item [(d)] $f(x)=x^3$ on $\mathbb{R}$: Not uniformly continuous\\\textbf{Proof: } By contradiction. Suppose $x^3$ is uniformly continuous on $\mathbb{R}$, let $\epsilon=1$ and $\delta>0$, then for $x,y\in\mathbb{R}$ we should have $\abs{x-y}<\delta\implies\abs{x^3-y^3}=\abs{x-y}\cdot\abs{x^2+xy+y^2}<1$. However, if we choose $x=\frac{2}{\delta}$ and $y=\frac{2}{\delta}+\frac{\delta}{2}$, we have $\abs{x-y}=\frac{\delta}{2}<\delta$ and $\abs{x^2+xy+y^2}=\frac{\delta^2}{4}+\frac{12}{\delta^2}+3$ which is greater than $\epsilon=1$. Therefore $x^3$ is not uniformly continuous on $\mathbb{R}$.
+              \item [(e)] $f(x)=\text{sin}\,\frac{1}{x^2}$ on $(0,1]$: Not uniformly continuous\\\textbf{Proof: }Let $(s_n)=\frac{1}{n}$, which is a Cauchy sequence on $(0,1]$, then $(f(s_n))=\text{sin}\,n^2$ which is not convergent on $(0,1]$ and therefore is not a Cauchy sequence. Therefore $f(x)$ is not uniformly continuous by Theorem 19.4.
           \end{itemize}
-    \item [19.2] Prove each of the following functions is uniformily continuous on the indicated set by directly verifying the $\epsilon$-$\delta$ property in Definition 19.1.
+    \item [19.2] Prove each of the following functions is uniformly continuous on the indicated set by directly verifying the $\epsilon$-$\delta$ property in Definition 19.1.
           \begin{itemize}
-              \item [(a)] $f(x)=3x+11$ on $\mathbb{R}\implies f(x)-f(y)=3x+11-3y-11=3(x-y)$, then $\abs{x-y}<\delta\implies\abs{3(x-y)}<3\delta$. Then if we take $\delta=\frac{\epsilon}{3}$ we have $\abs{f(x)-f(y)}=<\epsilon$.
-              \item [(b)] $f(x)=x^2$ on $[0,3]\implies f(x)-f(y)=x^2-y^2$, then for $x,y\in[0,3]$, $\abs{x-y}<\delta\implies x^2-y^2\leq\abs{x-y}^2<\delta^2$
+              \item [(a)] $f(x)=3x+11$ on $\mathbb{R}$\\\textbf{Proof: }$\abs{f(x)-f(y)}=\abs{3x+11-3y-11}=3\abs{x-y}$; Then if we take $\delta=\frac{\epsilon}{3}$ we have $\abs{x-y}<\delta\implies 3\abs{x-y}<3\delta\implies\abs{f(x)-f(y)}<\epsilon$.
+              \item [(b)] $f(x)=x^2$ on $[0,3]$\\\textbf{Proof: }$\abs{f(x)-f(y)}=\abs{x^2-y^2}=\abs{x+y}\cdot\abs{x-y}$; since $x,y\in[0,3]$, $\abs{x+y}\leq 6$. Then if we take $\delta=\frac{\epsilon}{6}$ we have $\abs{x-y}<\delta\implies \abs{f(x)-f(y)}\leq 6\abs{x-y}<\epsilon$.
           \end{itemize}
     \item [19.4]
+          \begin{itemize}
+              \item [(a)] \textbf{Proof:} Assume $f$ is not a bounded function on $S$. Since $S$ is a bounded set, there exists a bounded sequence $(s_n)$ in $S$ with a Cauchy subsequence $(s_{n_k})$ by Theorem 11.5. Then, since $f$ is uniformly continuous, $(f(s_{n_k}))$ is also a Cauchy sequence. However this contradicts with $f$ not being a bounded function on $S$; therefore the assumption is false and $f$ is a bounded function.
+              \item [(b)] Since $\text{lim}_{x\rightarrow 0}\frac{1}{x^2}=+\infty$, $\frac{1}{x^2}$ is not a bounded function on the bounded set $(0,1)$. Then by the contrapositive of part (a), $\frac{1}{x^2}$ is not uniformly continuous on $(0,1)$.
+          \end{itemize}
     \item [19.7]
           \begin{itemize}
-              \item [(a)]
+              \item [(a)] Since $f$ is continuous on $[0,\infty)$, it is continuous on $[0,k]$. Then $f$ is also uniformly continuous on $[0,k]$ by Theorem 19.2. Then since it is given that $f$ is uniformly continuous on $[k,\infty]$, combining the two gives us that $f$ is uniformly continuous on $[0,\infty]$.
           \end{itemize}
-    \item [20.14]
-    \item [20.16]
-    \item [28.2]
+    \item [20.14] Prove $\text{lim}_{n\rightarrow 0^+}\frac{1}{x}=+\infty$ and $\text{lim}_{n\rightarrow 0^-}\frac{1}{x}=-\infty$.
           \begin{itemize}
-              \item [(a)]
-              \item [(b)]
+              \item [$x\rightarrow 0^+$: ] \textbf{Proof: } Let $M>0$ and choose $\delta=\frac{1}{M}>0$, then $0<x<\delta\implies f(x)=\frac{1}{x}>\frac{1}{\delta}=M$. Therefore $\text{lim}_{n\rightarrow 0^+}\frac{1}{x}=+\infty$ by definition.
+              \item [$x\rightarrow 0^-$: ] \textbf{Proof: } Let $M<0$ and choose $\delta=-\frac{1}{M}>0$, then $-\delta<x<0\implies f(x)=\frac{1}{x}<-\frac{1}{\delta}=M$. Therefore $\text{lim}_{n\rightarrow 0^-}\frac{1}{x}=-\infty$ by definition.
           \end{itemize}
-    \item [28.11]
-    \item [28.14]
-    \item [29.3]
+    \item [20.16] Suppose the limits $L_1=\text{lim}_{x\rightarrow a^+}f_1(x)$ and $L_2=\text{lim}_{x\rightarrow a^+}f_2(x)$ exists.
           \begin{itemize}
-              \item [(a)]
+              \item [(a)] Show if $f_1(x)\leq f_2(x)$ for all $x$ in some interval $(a,b)$, then $L_1\leq L_2$.\\\textbf{Proof: }By definition, we can take a sequence $(x_n)$ in $(a,b)$ with limit $a$ such that $\text{lim}_{n\rightarrow\infty}f_1(x_n)=L_1$. Similarly, $\text{lim}_{n\rightarrow\infty}f_2(x_n)=L_2$. Then since $f_1(x)\leq f_2(x)$, $\text{lim}_{n\rightarrow\infty}f_1(x_n)\leq\text{lim}_{n\rightarrow\infty}f_2(x_n)$ by Exercise 9.9(c). Therefore $L_1\leq L_2$.
+              \item [(b)] Suppose that, in fact, $f_1(x)<f_2(x)$ for all x in some interval $(a,b)$. Can you conclude $L_1<L_2$?\\\textbf{Proof: } No; by counter example: $f_1(x)=x$ and $f_2(x)=x^2$ on $(0,1)$. Clearly $f_1(x)<f_2(x)$ for $x>0$, yet $\text{lim}_{n\rightarrow 0^+}f_1(x)=\text{lim}_{n\rightarrow 0^+}f_2(x)=0$.
+          \end{itemize}
+    \item [28.2] Use the \textit{definition} of derivative to calculate the derivatives of the following functions at the indicated points.
+          \begin{itemize}
+              \item [(a)] $f(x)x^3$ at $x=2\implies f'(2)=\text{lim}_{x\rightarrow 2}\frac{x^3-2^3}{x-2}=\text{lim}_{x\rightarrow 2}(x^2+2x+4)=12$
+              \item [(b)] $g(x)=x+2$ at $x=a\implies f'(a)=\text{lim}_{x\rightarrow a}\frac{x+2-a-2}{x-a}=\text{lim}_{x\rightarrow a}$
+          \end{itemize}
+    \item [28.11] Suppose $f$ is differentiable at $a$, $g$ is differentiable at $f(a)$, and $h$ is differentiable at $g\circ f(a)$. State and prove the chain rule for $(h\circ g\circ f)'(a)$.\\$(h\circ g\circ f)'(a)=h'(g\circ f(a))\cdot g'(f(a)\cdot f'(a))$, \textbf{Proof: } Let $y(x)=(g\circ f)(x)$, then by substitution and Chain Rule we have $y(a)=(g\circ f)(a)$ and $y'(a)=g'(f(a))\cdot f'(a)$. Again by substitution and Chain Rule, $(h\circ g\circ f)'(a)=(h\circ y)'(a)=h'(y(a))\cdot y'(a)=h'(g\circ f(a))\cdot g'(f(a))\cdot f'(a)$.
+    \item [28.14] Suppose $f$ is differentiable at $a$. Prove
+          \begin{itemize}
+              \item [(a)] $\text{lim}_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h}=f'(a)$\\\textbf{Proof: } Since $f$ is differentiable at $a$, we have $f'(a)=\text{lim}_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}$ by definition. Then we can substitute in $h=x-a\implies x=a+h$, which gives us $f'(a)=\text{lim}_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h}$.
+              \item [(b)] $\text{lim}_{h\rightarrow 0}\frac{f(a+h)-f(a-h)}{2h}=f'(a)$\\\textbf{Proof: } By algebra as follows, using part (a):\\$\text{lim}_{h\rightarrow 0}\frac{f(a+h)-f(a-h)}{2h}$\\$=\text{lim}_{h\rightarrow 0}\frac{f(a+h)-f(a)-f(a-h)+f(a)}{2h}$\\$=\frac{1}{2}\text{lim}_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h}+\frac{1}{2}\text{lim}_{(-h)\rightarrow 0}\frac{f(a+(-h))-f(a)}{(-h)}$\\$=\frac{1}{2}f'(a)+\frac{1}{2}f'(a)$\\$=f'(a)$
+          \end{itemize}
+    \item [29.3] Suppose $f$ is differentiable on $\mathbb{R}$ and $f(0)=0$, $f(1)=1$ and $f(2)=1$.
+          \begin{itemize}
+              \item [(a)] Show $f'(x)=\frac{1}{2}$ for some $x\in(0,2)$.\\\textbf{Proof: } Let $a=0$ and $b=2$, then by Mean Value Theorem there exists at least one $x$ in $(0,2)$ such that $f'(x)=\frac{f(b)-f(a)}{b-a}=\frac{1-0}{2-0}=\frac{1}{2}$.
           \end{itemize}
     \item [29.7]
-    \item [29.13]
-    \item [P1]
-    \item [P2]
-    \item [P3]
+          \begin{itemize}
+              \item [(a)] Suppose $f$ is twice differentiable on an open interval $I$ and $f''(x)=0$ for all $x\in I$. Show $f$ has the form $f(x)=ax+b$ for suitable constants $a$ and $b$.\\\textbf{Proof: } Let $g(x)=f'(x)$, then $g$ is a constant function on $(a,b)$ by Corollary 29.4, i.e. $g(x)=f'(x)=a$ for some $a\in\mathbb{R}$. Now let $h(x)=f(x)-ax$, then we have $h'(x)=f'(x)-a=0$; again by Corollary 29.4, $h(x)$ is also a constant function, i.e. $h(x)=f(x)-ax=b$ for some $b\in\mathbb{R}$. Therefore by rearranging the last equation we have $f(x)=ax+b$.
+              \item [(b)] Suppose $f$ is three times differentiable on an open interval $I$ and $f'''=0$ on $I$. What form does $f$ have? Prove your claim.\\\textbf{Proof: } Let $g(x)=f'(x)$, then $g''(x)=f'''(x)=0$ and therefore $g(x)=f'(x)=ax+b$ for $b,c\in\mathbb{R}$ by part (a). Now let $h(x)=f(x)-\frac{1}{2}ax^2-bx$, then using Power Rule we have $h'(x)=f'(x)-ax-b=0$. Then $h(x)$ is a constant function, i.e. $h(x)=f(x)-\frac{1}{2}ax^2-bx=c$ for some $c\in\mathbb{R}$. By rearranging the last equation we have $f(x)=\frac{1}{2}ax^2+bx+c$; note that $\frac{1}{2}a$ is simply another arbitrary constant in $\mathbb{R}$, therefore upon renaming we have $f(x)=ax^2+bx+c$.
+          \end{itemize}
+    \item [29.13] Prove that if $f$ and $g$ are differentiable on $\mathbb{R}$, if $f(0)=g(0)$ and if $f'(x)\leq g'(x)$ for all $x\in\mathbb{R}$, then $f(x)\leq g(x)$ for $x\geq 0$.\\\textbf{Proof: } Let $h(x)=g(x)-f(x)$, then $h$ is differentiable by Theorem 28.3(ii) and $h'(x)=g'(x)-f'(x)$. Since $f'(x)\leq g'(x)$, we have $h'(x)\geq 0$, then $h$ is increasing by Corollary 29.7(iii). Then $x_1<x_2\implies h(x_1)\leq h(x_2)$ for all $x_1,x_2\in\mathbb{R}$ by definition of increasing function. If we take $x_1=0$ and $x_2$ to be an arbitrary $x\geq 0$, we have $x\geq 0\implies h(x)\geq h(0)\implies g(x)-f(x)\geq g(0)-f(0)=0\implies f(x)\leq g(x)$.
+    \item [P1] Let $f$ be a differentiable function on an interval $(a,b)$. Prove that if $f'(x)<0$ for all $x\in(a,b)$, then $f$ is strictly increasing on $(a,b)$.
+    \item [P2] Let $a<b$ be reals. Let $f$ be a function defined on $(a,b)$, and let $x_0\in(a,b)$. Prove that if $f$ is differentiable at $x_0$ and $f'(x_0)>0$, then there is some $x>x_0$ such that $f(x)>f(x_0)$.
+    \item [P3] Suppose that $f$ and $f'$ are differentiable functions on $\mathbb{R}$, and there are $x_1<x_2<x_3$ so that $f(x_1)>f(x_2)$ and $f(x_3)>f(x_2)$. Prove that there is a point $x_0$ such that $f''(x_0)>0$.
 \end{itemize}
 \end{document}
