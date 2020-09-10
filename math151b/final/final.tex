@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Math 151B Midterm}
+\author{Jiaping Zeng}
+\date{8/24/2020}
+
+\begin{document}
+\setstretch{1.5}
+
+Jiaping Zeng 905363270
+
+\newpage
+\begin{itemize}
+    \item [1.]
+          \begin{itemize}
+              \item [(a)] First we find the Jacobian matrix
+                    \[J(x)=\begin{pmatrix}
+                            -1 & \text{cos}(x_2) \\
+                            0  & 10
+                        \end{pmatrix}\]
+                    Then the k-th step is:
+                    \[x^{(k)}=x^{(k-1)}-J(x^{(k-1)})^{-1}F(x^{(k-1)})\]
+                    \[\implies\begin{pmatrix}
+                            x_1^k \\x_2^k
+                        \end{pmatrix}=\begin{pmatrix}
+                            x_1^{k-1} \\x_2^{k-1}
+                        \end{pmatrix}-\begin{pmatrix}
+                            -1 & \text{cos}(x_2^{k-1}) \\
+                            0  & 10
+                        \end{pmatrix}^{-1}\begin{pmatrix}
+                            f_1(x^{(k-1)}) \\
+                            f_2(x^{(k-1)})
+                        \end{pmatrix}\]
+                    \[\implies\begin{pmatrix}
+                            x_1^k \\x_2^k
+                        \end{pmatrix}=\begin{pmatrix}
+                            x_1^{k-1} \\x_2^{k-1}
+                        \end{pmatrix}-\begin{pmatrix}
+                            -1 & \frac{1}{10}\text{cos}(x_2^{k-1}) \\
+                            0  & \frac{1}{10}
+                        \end{pmatrix}\begin{pmatrix}
+                            -x_1^{k-1}+\text{sin}(x_2^{k-1}) \\
+                            10x_2^{(k-1)}
+                        \end{pmatrix}\]
+                    \[\implies\begin{pmatrix}
+                            x_1^k \\x_2^k
+                        \end{pmatrix}=\begin{pmatrix}
+                            x_1^{k-1} \\x_2^{k-1}
+                        \end{pmatrix}-\begin{pmatrix}
+                            x_1^{k-1}+x_2^{k-1}\text{cos}(x_2^{k-1})-\text{sin}(x_2^{k-1}) \\
+                            x_2^{k-1}
+                        \end{pmatrix}\]
+                    \[\implies\begin{pmatrix}
+                            x_1^k \\x_2^k
+                        \end{pmatrix}=\begin{pmatrix}
+                            -x_2^{k-1}\text{cos}(x_2^{k-1})+\text{sin}(x_2^{k-1}) \\
+                            0
+                        \end{pmatrix}\]
+                    \[\implies\boxed{x_1^k=-x_2^{k-1}\text{cos}(x_2^{k-1})+\text{sin}(x_2^{k-1}), x_2^k=0}\]
+              \item [(b)] For Euler's method, we have:
+                    \[\begin{pmatrix}
+                            x_1^k \\
+                            x_2^k
+                        \end{pmatrix}=\begin{pmatrix}
+                            x_1^{k-1} \\
+                            x_2^{k-1}
+                        \end{pmatrix}+h\begin{pmatrix}
+                            100x_1^{k-1} \\
+                            -x_2^{k-1}
+                        \end{pmatrix}\]
+                    \[\implies\begin{pmatrix}
+                            x_1^k \\
+                            x_2^k
+                        \end{pmatrix}=\begin{pmatrix}
+                            (100h+1)x_1^{k-1} \\
+                            (-h+1)x_2^{k-1}
+                        \end{pmatrix}\]
+                    \[\implies\boxed{x_1^k=(100h+1)x_1^{k-1}, x_2^k=(-h+1)x_2^{k-1}}\]
+
+          \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [2.] We can Taylor expand both sides of the trapezoid method as follows:
+          \[y(t_{i+1})=y(t_i)+\frac{h}{2}(y'(t_i)+y'(t_{n+1}))\]
+          \[\implies y(t_i)+hy'(t_i)+\frac{h^2}{2}y''(t_i)+O(h^3)=y(t_i)+\frac{h}{2}(y'(t_i)+y'(t_{n+1}))\]
+          \[\implies y(t_i)+hy'(t_i)+\frac{h^2}{2}y''(t_i)+\frac{h^3}{6}y'''(t_i)+O(h^4)=y(t_i)+\frac{h}{2}(y'(t_i)+y'(t_i)+hy''(t_i)+\frac{h^2}{2}y'''(t_i)+O(h^3))\]
+          \[\implies y(t_i)+hy'(t_i)+\frac{h^2}{2}y''(t_i)+\frac{h^3}{6}y'''(t_i)+O(h^4)=y(t_i)+hy'(t_i)+\frac{h^2}{2}y''(t_i)+\frac{h^3}{4}y'''(t_i)+O(h^4)\]
+          By comparing both sides we can see that the truncation error is $\frac{h^3}{12}y'''(t_i)+O(h^4)$.
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [3.]
+          \begin{itemize}
+              \item [(a)] Let $u_1=y,u_2=y',u_3=y''$, then we have $u_1'=u_2,u_2'=u_3,u_3'=-4u_1^2+u_2+u_3$ which is a system of first-order ODEs.
+              \item [(b)] The characteristic polynomial of the ODE is $p(r)=r^2+1$, which has roots $r=\pm i$. Then the general solution is $y(t)=c_1\text{cos}(t)+c_2\text{sin}(t)$. Using the boundary conditions, we have $y(0)=c_1=0$ and $y(b)=c_1\text{cos}(b)+c_2\text{sin}(b)=B\implies c_1=0, c_2=\frac{B}{\text{sin}(b)}$.\\Then the BVP has no solution when $\text{sin}(b)=0$, i.e. when $b=k\pi,k\in\mathbb{Z}$. Otherwise, it has exactly one solution in the form of $y(t)=\frac{B}{\text{sin}(b)}\text{sin}(t)$.
+          \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [4.]
+          \begin{itemize}
+              \item [(a)]
+                    Let $g(\hat{x})=[f_1(x_1,x_2)]^2+[f_2(x_1,x_2)]^2$, then by expanding we have
+                    \[g(\hat{x})=2x_1^4-2x_1^3x_2+2e^{x_2}x_1^2+9x_1^2x_2^2-2x_1^2x_2-8x_1x_2^3+e^{2x_2}+16x_2^4-2e^{x_2}x_2\]
+                    The gradient can be found using $\nabla g(\hat{x})=2J(\hat{x})^tF(\hat{x})$, where $J(\hat{x})$ is the Jacobian matrix
+                    \[J(\hat{x})=\begin{pmatrix}
+                            2x_1     & e^{x_2}-1 \\
+                            2x_1-x_2 & 8x_2-1
+                        \end{pmatrix}\]
+                    , then by substitution we have
+                    \[\nabla g(\hat{x})=\begin{pmatrix}
+                            8x_1^3-6x_1^2x_2+x_1(4e^{x_2}+18x_2^2-4x_2)-8x_2^3 \\
+                            x_1^2(2e^{x_2}+16x_2-4)-2x_1x_2(8x_2-1)+2e^{2x_2}-2(x_2+1)e^{x_2}+64x_2^3-8x_2^2+2x_2
+                        \end{pmatrix}\]
+                    Using equations of $g(\hat{x})$ and $\nabla g(\hat{x})$ above, in addition to an initial approximation $\hat{x}^{(0)}$, we can evaluate $g(\hat{x}^{(0)})$ and $\nabla g(\hat{x}^{(0)})$. Now let $\hat{z}=\frac{\nabla g(\hat{x}^{(0)})}{||\nabla g(\hat{x}^{(0)})||_2}$ (normalized direction vector), then the next approximation can be obtained using $\hat{x}^{(1)}=\hat{x}^{(0)}-\alpha\hat{z}$ for some $\alpha>0$ (size of the step to be travelled in the direction of unit vector $\hat{z}$).\\
+                    Now $\alpha$ can be determined by $h(\alpha)=g(\hat{x}^{(0)}-\alpha\nabla g(\hat{x}^{(0)}))$ so that $h(\alpha)$ is minimal. To do so we choose $\alpha_1<\alpha_2<\alpha_3$ and evaluate $h(\alpha_i)$ at each of the three points, then interpolate them using Newton's forward divided-difference formula and finding a minimum (which I do not know the specific equation for this problem as $\bar{x}^{(0)}$ is not given). Then we can substitute $\alpha$ back into $h(\alpha)=g(\hat{x}^{(0)}-\alpha\nabla g(\hat{x}^{(0)}))$ and repeat the process for subsequent $\bar{x}^{(i)}$.
+              \item [(b)] Using the equation of $\nabla g(\hat{x})$ above, we have $\nabla g(\hat{x}^{(0)})=(12,-2)^t$ and $||\nabla g(\hat{x}^{(0)})||_2=2\sqrt{37}$. Then as explained in the previous part, the direction unit vector is \[\hat{z}=\frac{\nabla g(\hat{x}^{(0)})}{||\nabla g(\hat{x}^{(0)})||_2}=\begin{pmatrix}
+                            \frac{12}{2\sqrt{37}} \\
+                            \frac{-2}{2\sqrt{37}}
+                        \end{pmatrix}\]
+          \end{itemize}
+\end{itemize}
+\end{document}
