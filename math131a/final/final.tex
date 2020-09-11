@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+
+\title{Math 131A Final}
+\author{Jiaping Zeng}
+\date{9/10/2020}
+
+\begin{document}
+\setstretch{1.35}
+
+\begin{itemize}
+    \item [1.] Let $(s_n)_{n\in\mathbb{N}}$ be a bounded sequence of real numbers. Define a new sequence $(t_n)_{n\in\mathbb{N}}$ by setting \[t_n=\max\{s_1,\ldots,s_n\}\text{ for }n\in\mathbb{N}.\] Prove that $(t_n)_{n\in\mathbb{N}}$ is convergent.\\\textbf{Proof: } Since $(s_n)$ is bounded, there exists a $s=\sup S$ such that $s\geq s_n$ for all $n\in\mathbb{N}$. Furthermore, we have $t_n\leq s$ since $t_n=\max\{s_1,\ldots,s_n\}=\sup\{s_1,\ldots,s_n\}\leq\sup S=s$ (by Exercise 4.7(a), since $\{s_1,\ldots,s_n\}\subseteq S$). Therefore $(t_n)$ is a bounded sequence.\\In addition, since $t_{n+1}=\max\{s_1,\ldots,s_{n+1}\}=\max\{\max\{s_1,\ldots,s_n\},s_{n+1}\}=\max\{t_n,s_{n+1}\}$, we have $t_n\leq t_{n+1}$, then $(t_n)$ is an increasing monotone sequence. Then $(t_n)$ is both bounded and monotone and is therefore convergent by Theorem 10.2.
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [2.] Let $f$ be a real-valued function defined on $\mathbb{R}$. Let $S\subseteq\mathbb{R}$ be nonempty and bounded above, and let $f(S)=\{f(x):x\in S\}$. Suppose that $f$ is increasing on $\mathbb{R}$ and that $f$ is continuous at $\sup S$. Prove that $f(S)$ is bounded above and that $\sup f(S)=f(\sup S)$.\\\textbf{Proof: } Since $S$ is bounded above, there exists an $s=\sup S$ such that $x\leq s$ for $x\in S$. Then since $f$ is increasing, i.e. $f(x_1)<f(x_2)$ for $x_1<x_2$, we have $f(x)\leq f(s)$ for all $x\in S$. Therefore $f(s)$ is an upper bound (but not yet necessarily the supremum) of $f(S)$ which implies that $\sup f(S)\leq f(s)$.\\
+          Now if we order elements of $S$ into a sequence $(s_n)$, by Theorem 11.7 there exists a monotonic subsequence $(s_{n_k})$ with $\lim s_{n_k}=\limsup s_n=\sup S=s$. Then by definition of continuity, since $\lim s_{n_k}=s$, we have $\lim f(s_{n_k})=f(s)$. By definition of limit, for $\epsilon>0$ there exists an $N$ such that $n>N\implies\abs{f(s_{n_k})-f(s)}<\epsilon$. Since $s_{n_k}\leq s$ and $f$ is increasing, $f(s_{n_k})-f(s)\leq0$, then $n>N\implies f(s)-f(s_{n_k})<\epsilon\implies f(s)<f(s_{n_k})+\epsilon\leq\sup f(S)+\epsilon$. Since $\epsilon$ can be arbitrarilly small, we have $f(s)\leq\sup f(S)$. Then combining with $\sup f(S)\leq f(s)$ we get $\sup f(S)=f(s)=f(\sup S)$.
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [3.] Let $(s_n)$ and $(t_n)$ be sequences of real numbers. Suppose $(s_n)$ diverges to $+\infty$ and that the set \[\{n\in\mathbb{N}:s_n\leq t_n\}\] is infinite. Prove that $\limsup t_n=+\infty$.\\\textbf{Proof: } Since $(s_n)$ diverges to $+\infty$, for $M>0$ there exists an $N$ such that $n>N_0\implies s_n>M$. In addition, since $\{n\in\mathbb{N_0}:s_n\leq t_n\}$ is infinite, there must exist infinite $s_n\leq t_n$ with $n>N_0$. Then we can construct subsequences $(s_{n_k})$ and $(t_{n_k})$ with $n_k>N_0$ and $s_{n_k}\leq t_{n_k}$ for all $n_k$, which gives us $n_k>N_0\implies t_{n_k}\geq s_{n_k}>M$.\\
+          Now consider the sequence of supremums $(v_N)=(\sup\{t_n:n>N\})$; each $v_N$ must be no less than all $t_n, n>N$ by definition of supremum. Then if we take $N>N_0$, $v_N$ must also be no less than all $t_{n_k}, n_k>N$, i.e. $N>N_0\implies v_N\geq t_{n_k}>M$. Then by definition of limit we have $\lim v_N=+\infty$ and therefore $\limsup t_n=+\infty$.
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [4.] \begin{itemize}
+              \item [(a)] Give an example of $(x_n)_{n\in\mathbb{N}}$ and $(b_n)_{n\in\mathbb{N}}$ such that $x_n\leq b_n$ for all $n$, $\sum_{n=1}^\infty b_n$ converges, but $\sum_{n=1}^\infty x_n$ does not converge.\\\textbf{Example: } $(x_n)$ and $(b_n)$ where $x_n=-1$ and $b_n=\frac{1}{n^2}$.\\\textbf{Proof: } Since $x_n=-1<0$ and $b_n=\frac{1}{n^2}>0$ for all $n\in\mathbb{N}$, we have $x_n\leq b_n$. Then, $\sum_{n=1}^\infty b_n$ converges by p-test whereas $\sum_{n=1}^\infty x_n$ diverges as $\lim_{n\to\infty}x_n=-1\neq 0$.
+              \item [(b)] Suppose that $(a_n)_{n\in\mathbb{N}}$, $(x_n)_{n\in\mathbb{N}}$, and $(b_n)_{n\in\mathbb{N}}$ satisfy $a_n\leq x_n\leq b_n$ for all $n\in\mathbb{N}$. Prove that if $\sum_{n=1}^\infty a_n$ and $\sum_{n=1}^\infty b_n$ both converge, then $\sum_{n=1}^\infty x_n$ also converges.\\\textbf{Proof: } By Cauchy criterion, for $\epsilon>0$ there exists an $N_a$ such that $n\geq m\geq N_a\implies \abs{\sum_{k=m}^n a_k}<\epsilon\implies\sum_{k=m}^n a_k>-\epsilon$. Similarly, there also exists an $N_b$ such that $n\geq m\geq N_b\implies \abs{\sum_{k=m}^n b_k}<\epsilon\implies\sum_{k=m}^n b_k<\epsilon$. Then if we take $N=\max\{N_a,N_b\}$, both of the above are true.\\
+                    Now since $a_n\leq x_n\leq b_n$ for all $n$, we have $\sum_{k=m}^na_n\leq \sum_{k=m}^nx_n\leq \sum_{k=m}^nb_n$. Then $n\geq m\geq N\implies-\epsilon<\sum_{k=m}^na_n\leq \sum_{k=m}^nx_n\leq \sum_{k=m}^nb_n<\epsilon\implies\abs{\sum_{k=m}^nx_n}<\epsilon$. Therefore $\sum_{k=m}^nx_n$ satisfies the Cauchy criterion and is convergent.
+          \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [5.] \begin{itemize}
+              \item [(a)] Give an example of a real-valued function $f$ defined on all of $\mathbb{R}$ such that $\lim_{x\to+\infty}f(x)$ does not exist (either as a real number or as a symbol $+\infty$, $-\infty$). To show $\lim_{x\to+\infty}f(x)$ does not exist, give an example of a sequence $(x_n)$ diverging to infinity such that the limit of $(f(x_n))$ does not exist.\\\textbf{Example: } $f(x)=\sin(x)$ and $x_n=n$.\\\textbf{Proof: } $(x_n)$ clearly diverges to $+\infty$; now we will show that $\lim\,(f(x_n))$ does not exist by contradiction. Suppose $L=\lim\,(f(x_n))=\lim\,(\sin(x_n))$ did exist, then for every $\epsilon>0$ there exists an $N$ such that $n>N\implies\abs{\sin(x_n)-L}<\epsilon\implies L-\epsilon<\sin(x_n)<L+\epsilon$. If we take $\epsilon=1$, then $L-1<\sin(x_n)<L+1$.\\On the one hand, if $L\geq 0$, we need to have $L-1\leq-1<\sin(x_n)$ which is not true for $x_n=\frac{3\pi}{2}+2k\pi$, $k\in\mathbb{N}$. On the other hand, if $L\leq 0$, we need to have $\sin(x_n)<1\leq L+1$ which is not true for $x_n=\frac{\pi}{2}+2k\pi$. Thus $L\ngeq 0$ and $L\nleq 0$, therefore such $L$ does not exist.
+              \item [(b)] Let $f$ be a real-valued function defined on all of $\mathbb{R}$ such that $\lim_{x\to+\infty}f(x)$ exists and is a real number. Prove that $\lim_{y\to 0^+}f(\frac{1}{y})$ exists and \[\lim_{y\to 0^+}f\left(\frac{1}{y}\right)=\lim_{x\to+\infty}f(x)\]\\\textbf{Proof: } Let $L=\lim_{x\to+\infty}f(x)$; since $L$ exists, by definition, for each $\epsilon>0$ there exists $a<\infty$ such that $a<x$ implies $\abs{f(x)-L}<\epsilon$. Now if we take $\delta=\frac{1}{a}>0$ and $y=\frac{1}{x}$, by substitution we have $\frac{1}{\delta}<\frac{1}{y}\implies 0<y<\delta$ implies $\abs{f(\frac{1}{y})-L}<\epsilon$, which then by Corollary 20.8 tells us that $\lim_{x\to a^+}f(\frac{1}{y})=L=\lim_{x\to+\infty}f(x)$.
+          \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [6.] Fix $a\in\mathbb{R}$ and define the function $f$ by $f(x)=\abs{x-a}$ for $x\in\mathbb{R}$. Prove that $f$ is not differentiable at $a$.\\\textbf{Proof: } By contradiction. Suppose $f$ is differentiable at $a$, then by definition, the limit $L=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}=\lim_{x\to a}\frac{\abs{x-a}}{x-a}$ exists and is finite. If we take $S_1=(a,+\infty)\subseteq\mathbb{R}$, we have the right-hand limit $L_+=\lim_{x\to a^{S_1}}\frac{\abs{x-a}}{x-a}=1$ (since $x>a$ for all $x\in S_1$). Now if we take $S_2=(-\infty,a)\subseteq\mathbb{R}$, we have the left-hand limit $L_-=\lim_{x\to a^{S_2}}\frac{\abs{x-a}}{x-a}=-1$ (since $x<a$ for all $x\in S_2$). Then $L+-\neq L_+$ and $L$ does not exist by Theorem 20.10, therefore $f$ is not differentiable at $a$.
+\end{itemize}
+
+\newpage
+\begin{itemize}
+    \item [7.] \begin{itemize}
+              \item [(a)] Let $f$ be a real-valued function defined on all of $\mathbb{R}$. Suppose there is a constant $L>0$ such that $\abs{f(x)-f(y)}\leq L\abs{x-y}$ for all $x,y\in\mathbb{R}$. Prove that $f$ is uniformly continuous on $\mathbb{R}$.\\\textbf{Proof: } Let $\epsilon>0$ and $\delta=\frac{\epsilon}{L}>0$. Then for all $x,y\in\mathbb{R}$ we have $\abs{x-y}<\delta\implies \abs{f(x)-f(y)}\leq L\abs{x-y}<L\delta\implies \abs{f(x)-f(y)}<\epsilon$. Therefore $f$ is uniformly continuous on $\mathbb{R}$ by definition of uniform continuity.
+              \item [(b)] Let $f$ be a real-valued function defined on all of $\mathbb{R}$. Suppose that $f$ is differentiable on $\mathbb{R}$ and the set $\{\abs{f'(x)}:x\in\mathbb{R}\}$ is bounded. Prove that $f$ is uniformly continuous on $\mathbb{R}$.\\\textbf{Proof: } Since $\{\abs{f'(x)}:x\in\mathbb{R}\}$ is bounded, there exists an $s=\sup\{\abs{f'(x)}:x\in\mathbb{R}\}>0$ such that $\abs{f'(x)}\leq s$ for all $x\in\mathbb{R}$. Then we can select arbitrary distinct $x,y\in\mathbb{R}$ and have $y<x$ upon renaming; by Mean Value Theorem there exists some point $a$ on $(y,x)$ such that $f'(a)=\frac{f(x)-f(y)}{x-y}\implies \abs{f'(a)}=\abs{\frac{f(x)-f(y)}{x-y}}\leq s$. Then we have $\abs{f(x)-f(y)}\leq s\abs{x-y}$ for arbitrary $x,y$ and constant $s>0$, thus $f$ is uniformly continuous by part (a).
+          \end{itemize}
+\end{itemize}
+\end{document}
